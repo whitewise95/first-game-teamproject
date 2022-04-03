@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2377b54a-5f1d-4c28-b0db-6276fb4dc352" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/src/main/java/com/whitewise/web/WebApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/domain/HelloResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/whitewise/api/controller/ApiControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/out/production/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/main/java/com/whitewise/web/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/main/java/com/whitewise/web/controller/WebController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/test/java/com/whitewise/web/controller/WebControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -14,7 +20,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/controller/Apicontoller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/controller/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/mapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/api/build/classes/java/main/com/whitewise/api/mapper/MemberMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/api/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/controller/Apicontoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/controller/ApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/controller/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/whitewise/api/mapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/web/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/web/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +50,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -36,16 +70,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27HCmNv4XhDNTy3xRrSaWHZZQwO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -54,15 +99,140 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/web/src/main/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\coffe\Documents\whitewise\web\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.ApiControllerTest.롬복_기능_테스트 (1)">
+    <configuration name="ApiControllerTest.롬복_기능_테스트 (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":api:test" />
+            <option value="--tests" />
+            <option value="&quot;com.whitewise.api.controller.ApiControllerTest.롬복_기능_테스트&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ApiControllerTest.hello" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":api:test" />
+            <option value="--tests" />
+            <option value="&quot;com.whitewise.api.controller.ApiControllerTest.hello&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="WebControllerTest.hello" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":web:test" />
+            <option value="--tests" />
+            <option value="&quot;com.whitewise.web.controller.WebControllerTest.hello&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ApiControllerTest.hello" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="whitewise.api.test" />
+      <shortenClasspath name="MANIFEST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.whitewise.api.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.whitewise.api.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.whitewise.api.controller.ApiControllerTest" />
+      <option name="METHOD_NAME" value="hello" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebControllerTest.hello" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="whitewise.web.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.whitewise.web.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.whitewise.web.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.whitewise.web.controller.WebControllerTest" />
+      <option name="METHOD_NAME" value="hello" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <shortenClasspath name="MANIFEST" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="whitewise.api.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.whitewise.api.ApiApplication" />
@@ -70,14 +240,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="whitewise.web.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.whitewise.web.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.whitewise.web.WebApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -85,7 +249,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.WebApplication" />
+        <item itemvalue="Gradle.ApiControllerTest.롬복_기능_테스트 (1)" />
+        <item itemvalue="Gradle.ApiControllerTest.hello" />
+        <item itemvalue="JUnit.ApiControllerTest.hello" />
+        <item itemvalue="JUnit.WebControllerTest.hello" />
+        <item itemvalue="Gradle.WebControllerTest.hello" />
       </list>
     </recent_temporary>
   </component>
@@ -99,7 +267,7 @@
       <updated>1648967786263</updated>
       <workItem from="1648967792382" duration="202000" />
       <workItem from="1648971796115" duration="558000" />
-      <workItem from="1648972376830" duration="481000" />
+      <workItem from="1648972376830" duration="7408000" />
     </task>
     <servers />
   </component>
@@ -116,5 +284,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/web/src/test/java/com/whitewise/web/controller/WebControllerTest.java</url>
+          <line>20</line>
+          <properties class="com.whitewise.web.controller.WebControllerTest" method="hello">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

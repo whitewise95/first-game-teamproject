@@ -56,13 +56,17 @@ subprojects {
         implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 
         //spring
-        implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testImplementation 'org.springframework.security:spring-security-test'
 
+        //junit
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+        //lombok
+        implementation 'org.projectlombok:lombok:'
     }
 
     task initSourceFolders {
@@ -77,4 +81,20 @@ subprojects {
             }
         }
     }
+}
+
+project(':web') {
+    dependencies {
+
+    }
+}
+
+project(':api') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+    }
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -2,6 +2,7 @@ package com.whitewise.api.domain;
 
 import com.google.firebase.auth.UserRecord;
 
+
 public class User extends UserRecord.CreateRequest {
     private String displayName;
     private boolean emailVerified;

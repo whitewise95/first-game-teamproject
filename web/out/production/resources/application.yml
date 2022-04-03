@@ -1,0 +1,15 @@
+server:
+  address: 127.0.0.1
+  port: 8091
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod

@@ -5,15 +5,16 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.auth.*;
 import com.whitewise.api.components.fireBase.FireBase;
 import com.whitewise.api.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberMapper {
 
-    @Autowired
     private FireBase fireBase;
-    private FirebaseAuth mAuth;
+
+    public MemberMapper(FireBase fireBase) {
+        this.fireBase = fireBase;
+    }
 
     public Firestore newCreateFireBase() throws Exception {
         fireBase.dbInit();
