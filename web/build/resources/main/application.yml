@@ -1,5 +1,15 @@
 server:
   port: 8090
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl.auto: update
+    open-in-view: false
+    show-sql: true
+  datasource:
 
 ---
 spring:

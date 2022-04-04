@@ -10,6 +10,8 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'com.google.gms:google-services:4.3.10'
     }
+
+
 }
 
 plugins {
@@ -67,6 +69,11 @@ subprojects {
 
         //lombok
         implementation 'org.projectlombok:lombok:'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        //restTemplate
+        implementation 'org.apache.httpcomponents:httpcore:4.4.13'
     }
 
     task initSourceFolders {
@@ -85,6 +92,9 @@ subprojects {
 
 project(':web') {
     dependencies {
+        implementation 'mysql:mysql-connector-java'
+        implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+        implementation 'com.h2database:h2'
 
     }
 }
