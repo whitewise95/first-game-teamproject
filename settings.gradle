@@ -1,3 +1,2 @@
-rootProject.name = 'whitewise'
-include 'api'
-include 'web'
+rootProject.name = 'study'
+

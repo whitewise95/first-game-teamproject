@@ -1,130 +1,90 @@
 buildscript {
     ext {
-        springBootVersion = '2.2.2.RELEASE'
+        springBootVersion = '2.1.9.RELEASE'
     }
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'com.google.gms:google-services:4.3.10'
     }
-
-
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.6.5'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'eclipse'
 }
 
-allprojects {
-    group = 'com.whitewise'
-    version = '0.0.1-SNAPSHOT'
+group 'org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+
+repositories {
+    google()
+    mavenCentral()
+    jcenter()
 }
 
-subprojects {
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'java'
+dependencies {
+    //lombok
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
-    sourceCompatibility = '1.8'
+    //junit
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-    repositories {
-        google()
-        mavenCentral()
-    }
+    //jpa
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
+    //mustache
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
 
-    dependencies {
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
+    //OAuth
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
-        //fireBase
-        implementation 'com.google.firebase:firebase-analytics'
-        implementation 'com.google.firebase:firebase-admin:8.1.0'
-        implementation platform('com.google.firebase:firebase-bom:29.2.0')
-        implementation group: 'com.google.firebase', name: 'firebase-auth', version: '21.0.3'
-        implementation 'com.google.firebase:firebase-auth'
+    //fireBase
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-admin:8.1.0'
+    implementation platform('com.google.firebase:firebase-bom:29.2.0')
+    implementation group: 'com.google.firebase', name: 'firebase-auth', version: '21.0.3'
+    implementation 'com.google.firebase:firebase-auth'
 
-        //jwt
-        implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-        //sftp
-        implementation group: 'com.jcraft', name: 'jsch', version: '0.1.54'
+    //jwt
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    //sftp
+    implementation group: 'com.jcraft', name: 'jsch', version: '0.1.54'
 
-        //json
-        implementation group: 'org.json', name: 'json', version: '20090211'
-        implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    //json
+    implementation group: 'org.json', name: 'json', version: '20090211'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 
-        //spring
-        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-        implementation 'org.springframework.boot:spring-boot-starter-security'
-        testImplementation 'org.springframework.security:spring-security-test'
+    //spring
+    implementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
-        //junit
-        testImplementation group: 'junit', name: 'junit', version: '4.12'
+    //가져온 spring
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
-        //lombok
-        implementation 'org.projectlombok:lombok:'
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+    //restTemplate
+    implementation 'org.apache.httpcomponents:httpcore:4.4.13'
 
-        //restTemplate
-        implementation 'org.apache.httpcomponents:httpcore:4.4.13'
-
-        //OAuth
-        implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
-
-        //lombok
-        implementation 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+    //poi
+    implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'        // HSSFWorkbook 사용가능
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
 
 
-        //test
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-        //jpa
-        implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-        implementation('com.h2database:h2')
-
-        //mustache
-        implementation('org.springframework.boot:spring-boot-starter-mustache')
-
-
-    }
-
-    task initSourceFolders {
-        sourceSets*.java.srcDirs*.each {
-            if (!it.exists()) {
-                it.mkdirs()
-            }
-        }
-        sourceSets*.resources.srcDirs*.each {
-            if (!it.exists()) {
-                it.mkdirs()
-            }
-        }
-    }
-}
-
-project(':web') {
-    dependencies {
-        implementation 'mysql:mysql-connector-java'
-        implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
-        implementation 'com.h2database:h2'
-
-    }
-}
-
-project(':api') {
-    dependencies {
-    }
 }
 
 test {
