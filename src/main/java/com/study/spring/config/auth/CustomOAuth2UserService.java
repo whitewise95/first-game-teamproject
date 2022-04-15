@@ -1,7 +1,10 @@
 package com.study.spring.config.auth;
 
+import com.google.firebase.auth.FirebaseAuthException;
 import com.study.spring.config.auth.dto.*;
+import com.study.spring.domain.User;
 import com.study.spring.domain.user.*;
+import com.study.spring.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.*;
@@ -17,6 +20,7 @@ import java.util.Collections;
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>  {
     private final UserRepository userRepository;
+    private final MemberMapper memberMapper;
     private final HttpSession httpSession;
 
     @Override
@@ -30,22 +34,19 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        User user = null;
+
+        try {
+            user = memberMapper.socialInsert(attributes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         httpSession.setAttribute("user", user);
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(Role.USER.name())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
-    }
-
-
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
-                .orElse(attributes.toEntity());
-
-        return userRepository.save(user);
     }
 
 

@@ -7,6 +7,8 @@ import org.slf4j.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
+import javax.servlet.http.HttpSession;
+
 import java.util.Iterator;
 
 @RestController
@@ -15,22 +17,29 @@ public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
+    private final HttpSession httpSession;
     private MemberService memberService;
     private CommonService commonService;
 
-    public MemberController(MemberService memberService, CommonService commonService) {
+    public MemberController(HttpSession httpSession, MemberService memberService, CommonService commonService) {
+        this.httpSession = httpSession;
         this.memberService = memberService;
         this.commonService = commonService;
     }
 
-    @PostMapping("/requestJwt")
-    public String createJwt(@RequestParam("id") String id) {
-        return memberService.createJwt(id);
+//    @PostMapping("/requestJwt")
+//    public String createJwt(@RequestParam("id") String id) {
+//        return memberService.createJwt(id);
+//    }
+
+    @PostMapping("/toIdToken")
+    public String createJwt(@RequestParam("uid") String uid) throws Exception {
+        return memberService.createJwt(uid);
     }
 
-    @PostMapping("responseJwt")
-    public String getJwt(@RequestParam("jwt") String jwt) {
-        return memberService.getJwt(jwt);
+    @PostMapping("toUid")
+    public String getJwt(@RequestParam("idToken") String idToken) throws Exception {
+        return memberService.getJwt(idToken);
     }
 
     /*
@@ -76,6 +85,23 @@ public class MemberController {
         }
         commonService.fileUpload(file);
         return null;
+    }
+
+    @ResponseBody
+    @RequestMapping("/loginSuccess")
+    public String login() {
+        return "";
+    }
+
+    public String oauth2(String oauth2) {
+        return "redirect:/oauth2/authorization/"+oauth2;
+    }
+
+    @GetMapping("/login/{oauth2}")
+    public String login(@PathVariable String oauth2) throws Exception {
+        oauth2(oauth2);
+        User user = (User) httpSession.getAttribute("user");
+        return createJwt(user.getUid());
     }
 
 }

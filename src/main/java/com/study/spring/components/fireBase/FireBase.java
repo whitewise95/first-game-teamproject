@@ -51,10 +51,4 @@ public class FireBase {
         return DB = FirestoreClient.getFirestore();
     }
 
-    public String test(String idToken) throws FirebaseAuthException {
-        FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(idToken);
-        String uid = decodedToken.getUid();
-        return uid;
-    }
-
 }

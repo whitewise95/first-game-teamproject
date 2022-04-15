@@ -1,6 +1,7 @@
 package com.study.spring.controller;
 
 import com.study.spring.config.auth.dto.SessionUser;
+import com.study.spring.domain.User;
 import com.study.spring.dto.PostsResponseDto;
 import com.study.spring.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +24,9 @@ public class IndexController {
     @RequestMapping("/")
     public String main(Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        User user = (User) httpSession.getAttribute("user");
         if(user != null) {
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("userName", user.getDisplayName());
         }
         return "index";
     }
@@ -50,8 +51,5 @@ public class IndexController {
         postsService.delete(id);
     }
 
-    @GetMapping("/login/{oauth2}")
-    public String login(@PathVariable String oauth2) {
-        return "redirect:/oauth2/authorization/"+oauth2;
-    }
+
 }

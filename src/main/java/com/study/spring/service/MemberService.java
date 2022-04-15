@@ -6,11 +6,10 @@ import com.study.spring.components.Components;
 import com.study.spring.domain.User;
 import com.study.spring.domain.common.resultType.StatusCode;
 import com.study.spring.mapper.MemberMapper;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
 
 import java.util.*;
 
@@ -25,6 +24,35 @@ public class MemberService {
     public MemberService(Components components, MemberMapper memberMapper) {
         this.components = components;
         this.memberMapper = memberMapper;
+    }
+
+    public String createJwt(String uid) throws Exception {
+        return memberMapper.createJwt(uid);
+    /*
+        jwt토큰
+            return Jwts.builder()
+                    .setSubject(id)
+                    .signWith(signatureAlgorithm, getSecretKeySpec(DatatypeConverter.parseBase64Binary(components.getDefaultData().getSecretKey())))
+                    .setExpiration(new Date(System.currentTimeMillis() + 1 * 1000 * 60 * 60 * 128))
+                    .compact();
+        }
+    */
+    }
+
+    public String getJwt(String idToken) throws Exception {
+        return memberMapper.getJwt(idToken);
+    /*
+        jwt
+        try {
+            return Jwts.parser()
+                    .setSigningKey(DatatypeConverter.parseBase64Binary("secretKey"))
+                    .parseClaimsJws(jwt)
+                    .getBody()
+                    .getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("parseError : " + e.getMessage());
+        }
+     */
     }
 
     public ResponseCode insertMember(User user) throws Exception {
@@ -74,26 +102,6 @@ public class MemberService {
         responseObject.put("user", new User().setEmail(userRecord.getEmail()));
 
         return new Gson().toJson(responseObject);
-    }
-
-    public String createJwt(String id) {
-        return Jwts.builder()
-                .setSubject(id)
-                .signWith(signatureAlgorithm, getSecretKeySpec(DatatypeConverter.parseBase64Binary(components.getDefaultData().getSecretKey())))
-                .setExpiration(new Date(System.currentTimeMillis() + 2 * 1000 * 60))
-                .compact();
-    }
-
-    public String getJwt(String jwt) {
-        try {
-            return Jwts.parser()
-                    .setSigningKey(DatatypeConverter.parseBase64Binary("secretKey"))
-                    .parseClaimsJws(jwt)
-                    .getBody()
-                    .getSubject();
-        } catch (Exception e) {
-            throw new RuntimeException("parseError : " + e.getMessage());
-        }
     }
 
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {
