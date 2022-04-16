@@ -70,7 +70,6 @@ public class MemberController {
         return memberService.socialLogin(uid);
     }
 
-
     /*
     *
     * 넘겨준 엑셀 파일을  MultipartHttpServletRequest 객체로 받음
@@ -87,19 +86,8 @@ public class MemberController {
         return null;
     }
 
-    @ResponseBody
-    @RequestMapping("/loginSuccess")
-    public String login() {
-        return "";
-    }
-
-    public String oauth2(String oauth2) {
-        return "redirect:/oauth2/authorization/"+oauth2;
-    }
-
-    @GetMapping("/login/{oauth2}")
-    public String login(@PathVariable String oauth2) throws Exception {
-        oauth2(oauth2);
+    @RequestMapping("/login")
+    public String login() throws Exception {
         User user = (User) httpSession.getAttribute("user");
         return createJwt(user.getUid());
     }

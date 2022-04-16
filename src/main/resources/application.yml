@@ -10,3 +10,12 @@ spring:
       location: C:/Temp
       max-file-size: 100MB
       max-request-size: 100MB
+  security:
+    oauth2.client:
+      registration:
+        facebook:
+          clientId: 767719887494765
+          clientSecret: d4d72ce478a201fb84ce19f77bdc0cc8
+          scope:
+            - email
+            - public_profile

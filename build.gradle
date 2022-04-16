@@ -6,6 +6,7 @@ buildscript {
         google()
         mavenCentral()
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -31,6 +32,7 @@ repositories {
     google()
     mavenCentral()
     jcenter()
+    mavenCentral()
 }
 
 dependencies {

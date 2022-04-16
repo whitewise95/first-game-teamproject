@@ -1,7 +1,6 @@
 package com.study.spring.config.auth;
 
-import com.google.firebase.auth.FirebaseAuthException;
-import com.study.spring.config.auth.dto.*;
+import com.study.spring.config.auth.dto.OAuthAttributes;
 import com.study.spring.domain.User;
 import com.study.spring.domain.user.*;
 import com.study.spring.mapper.MemberMapper;
@@ -18,7 +17,7 @@ import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
-public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>  {
+public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     private final UserRepository userRepository;
     private final MemberMapper memberMapper;
     private final HttpSession httpSession;
@@ -41,13 +40,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         } catch (Exception e) {
             e.printStackTrace();
         }
-         httpSession.setAttribute("user", user);
+        httpSession.setAttribute("user", user);
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(Role.USER.name())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
-
 
 }
