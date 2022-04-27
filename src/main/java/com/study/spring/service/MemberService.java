@@ -3,6 +3,7 @@ package com.study.spring.service;
 import com.google.firebase.auth.UserRecord;
 import com.google.gson.Gson;
 import com.study.spring.components.Components;
+import com.study.spring.config.auth.dto.OAuth;
 import com.study.spring.domain.User;
 import com.study.spring.domain.common.resultType.StatusCode;
 import com.study.spring.mapper.MemberMapper;
@@ -86,22 +87,12 @@ public class MemberService {
         );
     }
 
-    public String socialLogin(String uid) throws Exception {
-        Map<String, Object> responseObject = new HashMap<>();
+    public void socialInsert(OAuth oAuth) throws Exception {
+        memberMapper.socialInsert(oAuth);
+    }
 
-        UserRecord userRecord = memberMapper.socialLogin(uid);
-        responseObject.put(
-                "responseCode",
-                new ResponseCode(
-                        StatusCode.OK,
-                        "status.OK 200 ",
-                        createJwt(userRecord.getEmail())
-                )
-        );
-
-        responseObject.put("user", new User().setEmail(userRecord.getEmail()));
-
-        return new Gson().toJson(responseObject);
+    public OAuth socialSelect(OAuth oAuth) throws Exception {
+        return memberMapper.socialSelect(oAuth);
     }
 
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {

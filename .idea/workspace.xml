@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="020fff29-5200-41ac-b9ee-04f652361737" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/AppProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CookieUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CurrentUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/OAuth2AuthenticationFailureHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/OAuth2AuthenticationSuccessHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/RestAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/repository/HttpCookieOAuth2AuthorizationRequestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/GoogleOAuth2UserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/OAuth2UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/OAuth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/oAuth2.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,12 +14,43 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/StudyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/StudyApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/WebConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/AppProperties$Auth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/AppProperties$OAuth2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/AppProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/CookieUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/CurrentUser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/CustomOAuth2UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/CustomOAuth2UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/LoginUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/LoginUserArgumentResolver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/OAuth2AuthenticationFailureHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/OAuth2AuthenticationSuccessHandler.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/repository/HttpCookieOAuth2AuthorizationRequestRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/MemberMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService$ResponseCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService$ResponseCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/layout/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/layout/header.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/StudyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/StudyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/AppProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CookieUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CurrentUser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CustomOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CustomOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/LoginUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/LoginUserArgumentResolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/OAuth2AuthenticationFailureHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/OAuth2AuthenticationSuccessHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/repository/HttpCookieOAuth2AuthorizationRequestRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +76,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,7 +136,7 @@
     <property name="project.structure.last.edited" value="모듈" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -307,7 +331,12 @@
       <workItem from="1650248383567" duration="1343000" />
       <workItem from="1650262094228" duration="613000" />
       <workItem from="1650442944618" duration="839000" />
-      <workItem from="1650684788105" duration="6147000" />
+      <workItem from="1650684788105" duration="6236000" />
+      <workItem from="1650796695327" duration="167000" />
+      <workItem from="1650796887977" duration="73000" />
+      <workItem from="1650856093720" duration="1626000" />
+      <workItem from="1651061808219" duration="117000" />
+      <workItem from="1651061947817" duration="10192000" />
     </task>
     <servers />
   </component>

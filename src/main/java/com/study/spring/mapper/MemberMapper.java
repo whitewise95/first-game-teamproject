@@ -4,9 +4,11 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.auth.*;
 import com.study.spring.components.fireBase.FireBase;
-import com.study.spring.config.auth.dto.OAuthAttributes;
+import com.study.spring.config.auth.dto.*;
 import com.study.spring.domain.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class MemberMapper {
@@ -55,13 +57,14 @@ public class MemberMapper {
         return FirebaseAuth.getInstance().getUser(uid);
     }
 
-    public User socialInsert(OAuthAttributes oAuthAttributes) throws Exception {
+    public OAuth socialSelect(OAuth oAuth) throws Exception {
         Firestore db = newCreateFireBase();
-        UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                .setEmail(oAuthAttributes.getEmail())
-                .setEmailVerified(false)
-                .setDisplayName(oAuthAttributes.getName());
-      return new User(FirebaseAuth.getInstance().createUser(request));
+        OAuth test = db.collection("social").document(oAuth.getUserInfo()).get().get().toObject(OAuth.class);
+        return test;
     }
 
+    public void socialInsert(OAuth oAuth) throws Exception {
+        Firestore db = newCreateFireBase();
+        db.collection("social").document(oAuth.getUserInfo()).set(oAuth);
+    }
 }
