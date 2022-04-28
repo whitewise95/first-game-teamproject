@@ -13,17 +13,17 @@
 <h1>Welcome to My Awesome App</h1>
 <div id="firebaseui-auth-container"></div>
 <div id="loader">Loading...</div>
-<input id="user" type="hidden" value="{{user}}">
+<input id="UniqueNumber" type="hidden" value="{{UniqueNumber}}">
+<input id="platform" type="hidden" value="{{platform}}">
 
 <script type="module">
   // Import the functions you need from the SDKs you need
   import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
   import {getAnalytics} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  let sendData = new Object();
+  let platform = null;
+
   const firebaseConfig = {
     apiKey: "AIzaSyAIk4Eeqs54cM_L84YlssmmzIb0zpfqpe0",
     authDomain: "egoism-3af0d.firebaseapp.com",
@@ -33,33 +33,28 @@
     appId: "1:865899910654:web:8a32560e1626cd197e5caf",
     measurementId: "G-Q5CGV5CSQJ"
   };
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
+  var ui = createUi()
 
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-  ui.start('#firebaseui-auth-container', {
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-  });
+  if($("#platform").val() == 'google') {
+    platform = firebase.auth.GoogleAuthProvider.PROVIDER_ID
+  } else if ($("#platform").val() == 'facebook') {
+    platform = firebase.auth.FacebookAuthProvider.PROVIDER_ID
+  }
 
   var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-        let userInfo = $("#user").val();
-        let uid = authResult.user._delegate.uid;
+        sendData.uniqueNumber = $("#UniqueNumber").val();
+        sendData.uid = authResult.user._delegate.uid;
         $.ajax({
-          type: "Get",
-          url: "/test2/"+uid+'/'+userInfo,
+          type: "POST",
+          contentType: 'application/json;  charset=uft-8',
+          data: JSON.stringify(sendData),
+          url: "/oauth",
           success: function (response) {
           }
         })
-        debugger;
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
@@ -68,17 +63,29 @@
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
+    signInSuccessUrl: 'http://localhost:8091/success',
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID
+      platform
     ]
   };
 
   ui.start('#firebaseui-auth-container', uiConfig);
 
 
-</script>
+  function createUi(){
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    return new firebaseui.auth.AuthUI(firebase.auth());
+  }
+
+
+
+
+</script>
 {{>layout/footer}}
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.study.spring.domain.common.resultType;
+package com.study.spring.dto.common.resultType;
 
 public enum StatusCode {
     OK(2000),

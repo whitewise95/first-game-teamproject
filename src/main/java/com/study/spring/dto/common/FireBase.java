@@ -1,4 +1,4 @@
-package com.study.spring.domain.common;
+package com.study.spring.dto.common;
 
 public class FireBase {
     private String apiKey = "AIzaSyACunQLN3OSACWPUkTDXXmeVhxtKrY_I6w";

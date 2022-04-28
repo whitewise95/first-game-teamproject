@@ -1,7 +1,5 @@
 package com.study.spring.components;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 public class Components {
 
     private DefaultData defaultData;
@@ -14,9 +12,4 @@ public class Components {
         this.defaultData = defaultData;
         return this;
     }
-
-    public BCryptPasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 }

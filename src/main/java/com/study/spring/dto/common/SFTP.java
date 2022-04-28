@@ -1,4 +1,4 @@
-package com.study.spring.domain.common;
+package com.study.spring.dto.common;
 
 public class SFTP {
     private String host;

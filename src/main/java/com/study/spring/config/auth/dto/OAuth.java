@@ -1,18 +1,12 @@
 package com.study.spring.config.auth.dto;
 
+import com.study.spring.domain.User;
 import lombok.*;
 
 @Getter
 @Setter
 public class OAuth {
-    private String userInfo;
+    private String uniqueNumber;
     private String uid;
-
-    public OAuth() {
-    }
-
-    public OAuth(String userInfo, String uid) {
-        this.userInfo = userInfo;
-        this.uid = uid;
-    }
+    private String platform;
 }

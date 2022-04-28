@@ -1,6 +1,5 @@
 package com.study.spring.domain.posts.web.dto;
 
-import com.study.spring.dto.HelloResponseDto;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;

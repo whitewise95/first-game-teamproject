@@ -14,7 +14,7 @@ import java.util.*;
 @Service
 public class CommonService {
 
-    private CommonMapper commonMapper;
+    private final CommonMapper commonMapper;
 
     public CommonService(CommonMapper commonMapper) {
         this.commonMapper = commonMapper;
@@ -91,5 +91,34 @@ public class CommonService {
             }
         }
         return skillCard;
+    }
+
+    public String createJwt(String uid) throws Exception {
+        return commonMapper.createJwt(uid);
+    /*
+        jwt토큰
+            return Jwts.builder()
+                    .setSubject(id)
+                    .signWith(signatureAlgorithm, getSecretKeySpec(DatatypeConverter.parseBase64Binary(components.getDefaultData().getSecretKey())))
+                    .setExpiration(new Date(System.currentTimeMillis() + 1 * 1000 * 60 * 60 * 128))
+                    .compact();
+        }
+    */
+    }
+
+    public String getJwt(String idToken) throws Exception {
+        return commonMapper.getJwt(idToken);
+    /*
+        jwt
+        try {
+            return Jwts.parser()
+                    .setSigningKey(DatatypeConverter.parseBase64Binary("secretKey"))
+                    .parseClaimsJws(jwt)
+                    .getBody()
+                    .getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("parseError : " + e.getMessage());
+        }
+     */
     }
 }

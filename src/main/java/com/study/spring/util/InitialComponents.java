@@ -1,7 +1,7 @@
 package com.study.spring.util;
 
 import com.study.spring.components.Components;
-import com.study.spring.domain.common.resultType.ApplicationProfile;
+import com.study.spring.dto.common.resultType.ApplicationProfile;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.*;
@@ -9,14 +9,12 @@ import org.springframework.core.env.Environment;
 
 import java.util.*;
 
-import static com.study.spring.domain.common.resultType.ApplicationProfile.*;
-
 @Configuration
 public class InitialComponents implements EnvironmentAware {
 
     private Environment environment;
 
-    private List<ApplicationProfile> PRODUCTION_PROFILES = Arrays.asList(DEFAULT, LOCAL);
+    private List<ApplicationProfile> PRODUCTION_PROFILES = Arrays.asList(ApplicationProfile.DEFAULT, ApplicationProfile.LOCAL);
 
     @Bean
     @ConfigurationProperties(prefix = "components")

@@ -1,4 +1,4 @@
-package com.study.spring.domain.common.resultType;
+package com.study.spring.dto.common.resultType;
 
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.*;
 
-import static com.study.spring.domain.common.resultType.ApplicationProfile.Const.*;
+import static com.study.spring.dto.common.resultType.ApplicationProfile.Const.*;
 
 public enum ApplicationProfile {
     DEFAULT(DEFAULT_PROFILE_NAME),
