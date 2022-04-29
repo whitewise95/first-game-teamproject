@@ -3,7 +3,7 @@ package com.study.spring.mapper;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.*;
 import com.study.spring.components.fireBase.FireBase;
-import com.study.spring.config.auth.dto.OAuth;
+import com.study.spring.dto.OAuth;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -33,5 +33,10 @@ public class MemberMapper {
     public void socialInsert(OAuth oAuth) throws Exception {
         Firestore db = newCreateFireBase();
         db.collection("social").document(oAuth.getUniqueNumber()).set(oAuth);
+    }
+
+    public UserRecord findUserToUid(String uid) throws Exception {
+        Firestore db = newCreateFireBase();
+        return FirebaseAuth.getInstance().getUser(uid);
     }
 }

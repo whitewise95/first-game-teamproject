@@ -1,9 +1,12 @@
 package com.study.spring.controller;
 
-import com.study.spring.config.auth.dto.OAuth;
-import com.study.spring.domain.User;
+import com.study.spring.domain.Login;
+import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
+import com.study.spring.service.common.CommonService;
+import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.*;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
@@ -15,10 +18,12 @@ public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-    private MemberService memberService;
+    private final MemberService memberService;
+    private final CommonService commonService;
 
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, CommonService commonService) {
         this.memberService = memberService;
+        this.commonService = commonService;
     }
 
     /*
@@ -26,7 +31,11 @@ public class MemberController {
      *
      * */
     @PostMapping("/login")
-    public OAuth login(OAuth oAuth) throws Exception {
+    public String login(@RequestBody @Validated(Login.class) OAuth oAuth) throws Exception {
+        if(!platformCheck(oAuth.getPlatform())){
+            return "not find platform :"+ oAuth.getPlatform();
+        }
+
         Integer cnt = 0;
         String os = System.getProperty("os.name");
         Runtime runtime = Runtime.getRuntime();
@@ -40,17 +49,26 @@ public class MemberController {
             openURL.invoke(null, new Object[] { url });
         }
         OAuth responseOAuth = null;
+        String token = null;
         while (true) {
             responseOAuth = memberService.socialSelect(oAuth);
-            if (Optional.ofNullable(oAuth).isPresent()) {
+            if (Optional.ofNullable(responseOAuth).isPresent()) {
+                token = commonService.createJwt(responseOAuth.getUid());
                 break;
             }
-            if(cnt > 100000) {
+            if (cnt > 100000) {
                 break;
             }
             cnt++;
         }
-        return responseOAuth;
+        return token;
+    }
+
+    private boolean platformCheck(String platform) {
+        if (!StringUtils.equals(platform, "google") && !StringUtils.equals(platform, "facebook")) {
+            return false;
+        }
+        return true;
     }
 
 }

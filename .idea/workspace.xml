@@ -5,111 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="020fff29-5200-41ac-b9ee-04f652361737" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/CommonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/success.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/study/spring/controller/MemberControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/StudyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/StudyApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/components/Components.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/components/Components.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/JpaConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/CustomOAuth2UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/RestAuthenticationEntryPoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/OAuth.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/OAuth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/OAuthAttributes$OAuthAttributesBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/OAuthAttributes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/SessionUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/config/auth/dto/OAuth.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/IndexController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/controller/PostsApiController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/common/FireBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/common/SFTP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/common/resultType/ApplicationProfile$Const.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/common/resultType/ApplicationProfile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/common/resultType/StatusCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/posts/BaseTimeEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/posts/Posts$PostsBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/posts/Posts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/posts/PostsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/GoogleOAuth2UserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/OAuth2UserInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/User$UserBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/domain/user/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/HelloResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsListResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsResponseDto$PostsResponseDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsResponseDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsSaveRequestDto$PostsSaveRequestDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsSaveRequestDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsUpdateRequestDto$PostsUpdateRequestDtoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/dto/PostsUpdateRequestDto.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/MemberMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/common/CommonMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/mapper/common/CommonMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService$ResponseCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService$ResponseCode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/MemberService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/common/CommonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/common/CommonService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/service/posts/PostsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/util/InitialComponents.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/study/spring/util/InitialComponents.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application-oauth.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/study/spring/controller/PostsApiControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/study/spring/domain/posts/PostsRepositoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/study/spring/domain/posts/web/HelloControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/study/spring/domain/posts/web/dto/HelloResponseDtoTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/oAuth2.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/oAuth2.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/postsSave.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/update.mustache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/StudyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/StudyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/components/Components.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/components/Components.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/JpaConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/CustomOAuth2UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/RestAuthenticationEntryPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/OAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/OAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/OAuthAttributes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/SessionUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/config/auth/dto/OAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/OAuth.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/controller/PostsApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/common/FireBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/common/FireBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/common/SFTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/common/SFTP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/common/resultType/ApplicationProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/common/resultType/ApplicationProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/common/resultType/StatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/common/resultType/StatusCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/posts/BaseTimeEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/posts/Posts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/posts/PostsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/GoogleOAuth2UserInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/OAuth2UserInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/domain/user/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/HelloResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/PostsListResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/PostsResponseDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/PostsSaveRequestDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/dto/PostsUpdateRequestDto.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/MemberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/common/CommonMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/mapper/common/CommonMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/service/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/service/common/CommonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/service/common/CommonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/service/posts/PostsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/spring/util/InitialComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/spring/util/InitialComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-oauth.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/oAuth2.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/oAuth2.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/postsSave.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/update.mustache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/spring/domain/posts/web/dto/HelloResponseDtoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/study/spring/domain/posts/web/dto/HelloResponseDtoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/spring/controller/PostsApiControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/spring/domain/posts/PostsRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/spring/domain/posts/web/HelloControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/study/spring/domain/posts/web/dto/HelloResponseDtoTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,10 +61,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -187,7 +114,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/freelec-springboot2-webservice-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -213,30 +140,14 @@
       <recent name="com.study.spring.config.auth" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.study.spring.domain.scope" />
       <recent name="com.study.spring.service" />
       <recent name="com.study.spring.controller" />
       <recent name="com.study.spring.domain" />
       <recent name="com.study.spring.mapper" />
-      <recent name="com.study.spring.service.posts" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StudyApplication">
-    <configuration name="HelloResponseDtoTest.롬복_기능_테스트" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="study.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.study.spring.domain.posts.web.dto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.study.spring.domain.posts.web.dto" />
-      <option name="MAIN_CLASS_NAME" value="com.study.spring.domain.posts.web.dto.HelloResponseDtoTest" />
-      <option name="METHOD_NAME" value="롬복_기능_테스트" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.MemberControllerTest.mainTest">
     <configuration name="IndexControllerTest.main" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="study.test" />
       <extension name="coverage">
@@ -253,7 +164,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostsApiControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MemberControllerTest.mainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="study.test" />
+      <shortenClasspath name="MANIFEST" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.study.spring.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.study.spring.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.study.spring.controller.MemberControllerTest" />
+      <option name="METHOD_NAME" value="mainTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MemberControllerTest.main_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="study.test" />
       <extension name="coverage">
         <pattern>
@@ -262,8 +190,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.study.spring.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.study.spring.controller.PostsApiControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.study.spring.controller.MemberControllerTest" />
+      <option name="METHOD_NAME" value="main_test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -332,6 +261,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <shortenClasspath name="MANIFEST" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StudyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="study.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.spring.StudyApplication" />
@@ -348,11 +284,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MemberControllerTest.mainTest" />
+        <item itemvalue="JUnit.MemberControllerTest.main_test" />
         <item itemvalue="JUnit.IndexControllerTest.main" />
         <item itemvalue="JUnit.PostsRepositoryTest.base_time_entity_등록" />
         <item itemvalue="JUnit.PostsApiControllerTest.Posts_등록된다" />
-        <item itemvalue="JUnit.PostsApiControllerTest" />
-        <item itemvalue="JUnit.HelloResponseDtoTest.롬복_기능_테스트" />
       </list>
     </recent_temporary>
   </component>
@@ -399,6 +335,9 @@
       <workItem from="1651061947817" duration="10192000" />
       <workItem from="1651147463235" duration="281000" />
       <workItem from="1651147786401" duration="9336000" />
+      <workItem from="1651157304587" duration="14000" />
+      <workItem from="1651206254546" duration="31000" />
+      <workItem from="1651234193948" duration="7950000" />
     </task>
     <servers />
   </component>
@@ -419,19 +358,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/com/study/spring/controller/PostsApiControllerTest.java</url>
-          <line>47</line>
-          <properties class="com.study.spring.controller.PostsApiControllerTest" method="Posts_등록된다">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.1.10.RELEASE/d0d3a2973d0feb5f13a2cb3b171883d2fe3d6019/spring-web-5.1.10.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java</url>
           <line>191</line>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/study/spring/controller/MemberController.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

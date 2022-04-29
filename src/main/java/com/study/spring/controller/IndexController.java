@@ -1,6 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.config.auth.dto.OAuth;
+import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

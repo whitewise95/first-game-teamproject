@@ -1,8 +1,7 @@
 package com.study.spring.service;
 
 import com.study.spring.components.Components;
-import com.study.spring.config.auth.dto.OAuth;
-import com.study.spring.controller.MemberController;
+import com.study.spring.dto.OAuth;
 import com.study.spring.domain.User;
 import com.study.spring.dto.common.resultType.StatusCode;
 import com.study.spring.mapper.MemberMapper;

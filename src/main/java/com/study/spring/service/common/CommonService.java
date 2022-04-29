@@ -1,6 +1,8 @@
 package com.study.spring.service.common;
 
+import com.google.firebase.auth.UserRecord;
 import com.study.spring.domain.card.SkillCard;
+import com.study.spring.mapper.MemberMapper;
 import com.study.spring.mapper.common.CommonMapper;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xssf.usermodel.*;
@@ -15,20 +17,21 @@ import java.util.*;
 public class CommonService {
 
     private final CommonMapper commonMapper;
+    private final MemberMapper memberMapper;
 
-    public CommonService(CommonMapper commonMapper) {
+    public CommonService(CommonMapper commonMapper, MemberMapper memberMapper) {
         this.commonMapper = commonMapper;
+        this.memberMapper = memberMapper;
     }
 
-    
     /*
-    * 
-    * file.getInputStream() 으로 OPCPackage 객체로 변환 후 XSSFWorkbook 객로 변환
-    *  ROW (세로) cell (가로)
-    * sheet.getPhysicalNumberOfRows() 세로의 총 길이를 알 수 있음
-    * setFild() 따로 분리해둔 메소드 를 이용해 POJO 객체를 만든다.
-    *
-    * */
+     *
+     * file.getInputStream() 으로 OPCPackage 객체로 변환 후 XSSFWorkbook 객로 변환
+     *  ROW (세로) cell (가로)
+     * sheet.getPhysicalNumberOfRows() 세로의 총 길이를 알 수 있음
+     * setFild() 따로 분리해둔 메소드 를 이용해 POJO 객체를 만든다.
+     *
+     * */
     public void fileUpload(MultipartFile file) {
         //        List<Fruit> list = new ArrayList<Fruit>();
         try {
@@ -59,17 +62,16 @@ public class CommonService {
         }
     }
 
-
     /*
-    *
-    * getPhysicalNumberOfCells() row의 각 가로의 값을 알 수 있음
-    * ReflectionUtils.findField(POJO클래스, 셀 위치) 메소드를 이용 Field개체로 변환
-    * ReflectionUtils.makeAccessible(Field 객체) 메소드를 이용 private 객체에 접근
-    * ReflectionUtils.setField(Field 객체, POJO클래스 객체 , 셀 위치) 메소드를 이용하여 setter와 같은 기능 수행
-    *
-    * switch 문으로 각 데이터타입에 대응
-    * */
-    private SkillCard setFild(XSSFSheet row, XSSFRow value){
+     *
+     * getPhysicalNumberOfCells() row의 각 가로의 값을 알 수 있음
+     * ReflectionUtils.findField(POJO클래스, 셀 위치) 메소드를 이용 Field개체로 변환
+     * ReflectionUtils.makeAccessible(Field 객체) 메소드를 이용 private 객체에 접근
+     * ReflectionUtils.setField(Field 객체, POJO클래스 객체 , 셀 위치) 메소드를 이용하여 setter와 같은 기능 수행
+     *
+     * switch 문으로 각 데이터타입에 대응
+     * */
+    private SkillCard setFild(XSSFSheet row, XSSFRow value) {
 
         SkillCard skillCard = new SkillCard();
 
@@ -79,8 +81,7 @@ public class CommonService {
             Field field = ReflectionUtils.findField(SkillCard.class, row.getRow(3).getCell(j).toString());
             ReflectionUtils.makeAccessible(field);
 
-
-            switch(row.getRow(2).getCell(j).toString()) {
+            switch (row.getRow(2).getCell(j).toString()) {
 
             case "String":
                 ReflectionUtils.setField(field, skillCard, value.getCell(j).toString());
@@ -94,7 +95,7 @@ public class CommonService {
     }
 
     public String createJwt(String uid) throws Exception {
-        return commonMapper.createJwt(uid);
+        return commonMapper.createJwt(memberMapper.findUserToUid(uid).getUid());
     /*
         jwt토큰
             return Jwts.builder()
