@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
+
     private final MemberService memberService;
+    private final ThreadService threadService;
 
     @RequestMapping("/")
     public String main() {
@@ -37,9 +39,9 @@ public class IndexController {
 
     @ResponseBody
     @PostMapping("/oauth")
-    public String oAuth2(@RequestBody OAuth oAuth) throws Exception {
+    public void oAuth2(@RequestBody OAuth oAuth) throws Exception {
         memberService.socialInsert(oAuth);
-        return "완료";
+        threadService.loginNotify();
     }
 
 }

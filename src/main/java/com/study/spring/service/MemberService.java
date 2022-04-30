@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
 
+import java.util.Optional;
+
 @Service
 public class MemberService {
 

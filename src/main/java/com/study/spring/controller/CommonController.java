@@ -1,7 +1,6 @@
 package com.study.spring.controller;
 
 import com.study.spring.service.common.CommonService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
@@ -41,7 +40,6 @@ public class CommonController {
     public String getJwt(@RequestParam("idToken") String idToken) throws Exception {
         return commonService.getJwt(idToken);
     }
-
 
     //    @PostMapping("/requestJwt")
     //    public String createJwt(@RequestParam("id") String id) {
