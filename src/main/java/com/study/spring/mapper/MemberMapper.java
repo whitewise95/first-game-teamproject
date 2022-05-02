@@ -3,6 +3,7 @@ package com.study.spring.mapper;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.*;
 import com.study.spring.components.fireBase.FireBase;
+import com.study.spring.domain.User;
 import com.study.spring.dto.OAuth;
 import org.springframework.stereotype.Repository;
 
@@ -25,14 +26,14 @@ public class MemberMapper {
         return FirebaseAuth.getInstance().getUser(uid);
     }
 
-    public OAuth socialSelect(OAuth oAuth) throws Exception {
+    public User socialSelect(OAuth oAuth) throws Exception {
         Firestore db = newCreateFireBase();
-        return db.collection("social").document(oAuth.getUniqueNumber()).get().get().toObject(OAuth.class);
+        return db.collection("user").document(oAuth.getUniqueNumber()).get().get().toObject(User.class);
     }
 
-    public void socialInsert(OAuth oAuth) throws Exception {
+    public void socialInsert(User user) throws Exception {
         Firestore db = newCreateFireBase();
-        db.collection("social").document(oAuth.getUniqueNumber()).set(oAuth);
+        db.collection("user").document(user.getUniqueNumber()).set(user);
     }
 
     public UserRecord findUserToUid(String uid) throws Exception {

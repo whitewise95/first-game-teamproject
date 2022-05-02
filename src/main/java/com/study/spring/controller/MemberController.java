@@ -67,7 +67,7 @@ public class MemberController {
     //    }
 
     @PostMapping("/login")
-    public OAuth login(@RequestBody @Validated(Login.class) OAuth oAuth) throws Exception {
+    public OAuth login(@Validated(Login.class) OAuth oAuth) throws Exception {
         if (!StringUtils.equals(oAuth.getPlatform(), Platform.GOOGLE.getPlatform()) && !StringUtils.equals(oAuth.getPlatform(), Platform.FACEBOOK.getPlatform())) {
             throw new RuntimeException("플랫폼이 잘못되었습니니다. platform : " + oAuth.getPlatform());
         }
@@ -75,6 +75,7 @@ public class MemberController {
         String os = System.getProperty("os.name");
         Runtime runtime = Runtime.getRuntime();
         String url = "http://localhost:8091/oauth/" + oAuth.getPlatform() + "/" + oAuth.getUniqueNumber();
+
         if (os.startsWith("Windows")) {
             String cmd = "rundll32 url.dll,FileProtocolHandler " + url;
             Process p = runtime.exec(cmd);

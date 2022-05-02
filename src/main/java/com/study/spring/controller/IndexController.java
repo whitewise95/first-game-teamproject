@@ -1,5 +1,6 @@
 package com.study.spring.controller;
 
+import com.study.spring.domain.User;
 import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +40,8 @@ public class IndexController {
 
     @ResponseBody
     @PostMapping("/oauth")
-    public void oAuth2(@RequestBody OAuth oAuth) throws Exception {
-        memberService.socialInsert(oAuth);
+    public void oAuth2(@RequestBody User user) throws Exception {
+        memberService.socialInsert(user);
         threadService.loginNotify();
     }
 

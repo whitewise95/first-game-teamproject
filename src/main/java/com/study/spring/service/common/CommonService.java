@@ -55,7 +55,7 @@ public class CommonService {
                 skillCardList.add(skillCard);
             }
 
-            commonMapper.insertDbData3(skillCardList, dbName, pk);
+            commonMapper.insertDbData(skillCardList, dbName, pk);
 
         } catch (Exception e) {
             e.printStackTrace();

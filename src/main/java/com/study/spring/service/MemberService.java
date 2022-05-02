@@ -30,8 +30,8 @@ public class MemberService {
         this.commonService = commonService;
     }
 
-    public void socialInsert(OAuth oAuth) throws Exception {
-        memberMapper.socialInsert(oAuth);
+    public void socialInsert(User user) throws Exception {
+        memberMapper.socialInsert(user);
     }
 
     public OAuth socialSelect(OAuth oAuth) throws Exception {

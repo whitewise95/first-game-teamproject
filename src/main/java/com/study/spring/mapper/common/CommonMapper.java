@@ -25,20 +25,7 @@ public class CommonMapper {
     public void insertDbData(List<SkillCard> skillCardList, String dbName, String pk) throws Exception {
         Firestore db = newCreateFireBase();
         skillCardList.forEach(skillCard ->
-                db.collection(dbName).document(skillCard.getCardName()).set(skillCard)
-        );
-    }
-
-    public void insertDbData2(List<SkillCard> skillCardList, String dbName, String pk) throws Exception {
-        Firestore db = newCreateFireBase();
-        skillCardList.forEach(skillCard ->
-                db.collection("skillLIst").document(pk).collection("cardList").document(skillCard.getCardName()).set(skillCard)
-        );
-    }
-    public void insertDbData3(List<SkillCard> skillCardList, String dbName, String pk) throws Exception {
-        Firestore db = newCreateFireBase();
-        skillCardList.forEach(skillCard ->
-                db.collection(pk).document(skillCard.getCardName()).set(skillCard)
+                db.collection(dbName).document(pk).set(skillCard)
         );
     }
 
