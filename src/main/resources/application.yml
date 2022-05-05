@@ -2,7 +2,6 @@ components:
   default-data:
     secret-key: 'AYASDI_ICUHDHDSEK_SKIMS'
     fire-base-key: 'egoism-3af0d-firebase-adminsdk-ilve2-f2c4f6863e.json'
-    fire-base-path: '\src\main\java\com\study\spring\components\fireBase\'
 spring:
   servlet:
     multipart:

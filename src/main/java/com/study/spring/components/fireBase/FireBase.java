@@ -3,7 +3,6 @@ package com.study.spring.components.fireBase;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.*;
-import com.google.firebase.auth.*;
 import com.google.firebase.cloud.FirestoreClient;
 import com.study.spring.components.*;
 import org.springframework.stereotype.Component;
@@ -19,6 +18,7 @@ public class FireBase {
     public FireBase(Components components) {
         this.defaultData = components.getDefaultData();
     }
+
     private FirebaseOptions option;
     private static Firestore DB;
     private final static String COLLECTION_NAME = "user";
@@ -35,7 +35,7 @@ public class FireBase {
         }
         if (!Optional.ofNullable(firebaseApp).isPresent()) {
             FileInputStream serviceAccount = new FileInputStream(
-                    new File("").getAbsolutePath() + defaultData.getFireBasePath() + defaultData.getFireBaseKey()
+                    new File("").getAbsolutePath() + "/" + defaultData.getFireBaseKey()
             );
 
             FirebaseOptions options = new FirebaseOptions.Builder()

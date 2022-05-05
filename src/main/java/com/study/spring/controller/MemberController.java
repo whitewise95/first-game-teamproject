@@ -10,6 +10,10 @@ import org.slf4j.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
+
+import java.awt.*;
+import java.io.*;
 import java.lang.reflect.Method;
 
 @RestController
@@ -72,19 +76,42 @@ public class MemberController {
             throw new RuntimeException("플랫폼이 잘못되었습니니다. platform : " + oAuth.getPlatform());
         }
 
-        String os = System.getProperty("os.name");
-        Runtime runtime = Runtime.getRuntime();
-        String url = "http://localhost:8091/oauth/" + oAuth.getPlatform() + "/" + oAuth.getUniqueNumber();
-
-        if (os.startsWith("Windows")) {
-            String cmd = "rundll32 url.dll,FileProtocolHandler " + url;
-            Process p = runtime.exec(cmd);
-        } else if (os.startsWith("Mac OS")) {
-            Class fileMgr = Class.forName("com.apple.eio.FileManager");
-            Method openURL = fileMgr.getDeclaredMethod("openURL", new Class[] { String.class });
-            openURL.invoke(null, new Object[] { url });
+        String url = "http://wisebookshop.com/oauth/" + oAuth.getPlatform() + "/" + oAuth.getUniqueNumber();
+//        try {
+//            Desktop desktop = Desktop.getDesktop();
+//            if (desktop.isSupported(Desktop.Action.OPEN)) {
+//                desktop.open(new File(url));
+//            } else {
+//                System.out.println("Open is not supported");
+//            }
+//        } catch (IOException exp) {
+//            exp.printStackTrace();
+//        }
+        String osName = System.getProperty("os.name");
+        try {
+            if (osName.startsWith("Mac OS")) {
+                Class<?> fileMgr = Class.forName("com.apple.eio.FileManager");
+                Method openURL = fileMgr.getDeclaredMethod("openURL", new Class[] { String.class });
+                openURL.invoke(null, new Object[] { url });
+            } else if (osName.startsWith("Windows")) {
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else // assume Unix or Linux
+            {
+                String[] browsers = { "firefox", "opera", "konqueror", "epiphany", "mozilla", "netscape" };
+                String browser = null;
+                for (int count = 0; count < browsers.length && browser == null; count++) {
+                    if (Runtime.getRuntime().exec(new String[] { "which", browsers[count] }).waitFor() == 0) {
+                        browser = browsers[count];
+                    }
+                }
+                if (browser == null)
+                    throw new Exception("Could not find web browser");
+                else
+                    Runtime.getRuntime().exec(new String[] { browser, url });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "errMsg" + ":\n" + e.getLocalizedMessage());
         }
-
         OAuth responseOAuth = threadService.login(oAuth);
 
         return responseOAuth;
