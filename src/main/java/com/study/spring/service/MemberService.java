@@ -7,6 +7,7 @@ import com.study.spring.dto.OAuth;
 import com.study.spring.mapper.MemberMapper;
 import com.study.spring.service.common.CommonService;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -54,8 +55,10 @@ public class MemberService {
     public String nickNameChange(User user) throws Exception {
         User selectUser = Optional.ofNullable(memberMapper.userSelect(user.getUid()))
                 .orElseThrow(() -> new NullPointerException("유저를 찾지 못했습니다. uid :" + user.getUid()));
-        memberMapper.nickNameChange(selectUser);
-        return "저장완료";
+        if(Optional.ofNullable(memberMapper.nickNameSelect(user.getNickName())).isPresent()) {
+            return "overlap";
+        }
+        return memberMapper.nickNameChange(selectUser);
     }
 
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {

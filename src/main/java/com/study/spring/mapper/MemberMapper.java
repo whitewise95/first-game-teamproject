@@ -7,6 +7,8 @@ import com.study.spring.domain.User;
 import com.study.spring.dto.OAuth;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class MemberMapper {
 
@@ -57,9 +59,19 @@ public class MemberMapper {
         return db.collection("user").document(uid).get().get().toObject(User.class);
     }
 
-    public void nickNameChange(User user) throws Exception {
+    public String nickNameChange(User user) {
+        try {
+            Firestore db = newCreateFireBase();
+            DocumentReference docRef = db.collection("user").document(user.getUid());
+            docRef.update("nickName", user.getNickName());
+            return "success";
+        } catch (Exception e){
+            return e.getMessage();
+        }
+    }
+
+    public List<QueryDocumentSnapshot> nickNameSelect(String nickName) throws Exception {
         Firestore db = newCreateFireBase();
-        DocumentReference docRef = db.collection("user").document(user.getUid());
-        docRef.update("nickName", user.getNickName());
+        return db.collection("cities").whereEqualTo("nickName", nickName).get().get().getDocuments();
     }
 }

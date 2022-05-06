@@ -5,6 +5,7 @@ import com.study.spring.domain.resultType.*;
 import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
 import com.study.spring.service.common.CommonService;
+import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +58,9 @@ public class MemberController {
 
     @PostMapping("/nickName")
     public String nickName(@Validated(NickName.class) User user) throws Exception {
+        if(StringUtils.equals(user.getNickName(), "guest")) {
+            throw new RuntimeException("[guest]는 사용할 수 없는 닉네임입니다.");
+        }
         return memberService.nickNameChange(user);
     }
 
