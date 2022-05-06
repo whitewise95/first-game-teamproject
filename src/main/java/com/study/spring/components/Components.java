@@ -2,14 +2,24 @@ package com.study.spring.components;
 
 public class Components {
 
-    private DefaultData defaultData;
+    private FireBaseProperties fireBaseProperties;
+    private Egoism egoism;
 
-    public DefaultData getDefaultData() {
-        return defaultData;
+    public FireBaseProperties getFireBaseProperties() {
+        return fireBaseProperties;
     }
 
-    public Components setDefaultData(DefaultData defaultData) {
-        this.defaultData = defaultData;
+    public Components setFireBaseProperties(FireBaseProperties fireBaseProperties) {
+        this.fireBaseProperties = fireBaseProperties;
+        return this;
+    }
+
+    public Egoism getEgoism() {
+        return egoism;
+    }
+
+    public Components setEgoism(Egoism egoism) {
+        this.egoism = egoism;
         return this;
     }
 }

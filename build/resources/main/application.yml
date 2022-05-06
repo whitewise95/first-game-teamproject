@@ -1,7 +1,8 @@
 components:
-  default-data:
+  fireBase-properties:
     secret-key: 'AYASDI_ICUHDHDSEK_SKIMS'
     fire-base-key: 'egoism-3af0d-firebase-adminsdk-ilve2-f2c4f6863e.json'
+    database-url: 'https://Egoism.firebaseio.com/'
 spring:
   servlet:
     multipart:
@@ -9,3 +10,25 @@ spring:
       location: C:/Temp
       max-file-size: 100MB
       max-request-size: 100MB
+
+
+---
+
+spring:
+  profiles: local
+components:
+  egoism:
+    base-url: 'http://localhost:8091'
+
+---
+
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: prod
+components:
+  egoism:
+    base-url: 'http://wisebookshop.com/'

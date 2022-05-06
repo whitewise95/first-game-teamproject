@@ -35,6 +35,7 @@
     <div id="loader">Loading...</div>
     <input id="UniqueNumber" type="hidden" value="{{UniqueNumber}}">
     <input id="platform" type="hidden" value="{{platform}}">
+    <input id="url" type="hidden" value="{{url}}">
   </div>
 </div>
 
@@ -46,7 +47,7 @@
 
   let sendData = new Object();
   let platform = null;
-
+  let baseUrl = $("#url").val();
   const firebaseConfig = {
     apiKey: "AIzaSyAIk4Eeqs54cM_L84YlssmmzIb0zpfqpe0",
     authDomain: "egoism-3af0d.firebaseapp.com",
@@ -85,7 +86,7 @@
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: 'http://localhost:8091/success',
+    signInSuccessUrl: baseUrl + '/success',
     signInOptions: [
       platform
     ]

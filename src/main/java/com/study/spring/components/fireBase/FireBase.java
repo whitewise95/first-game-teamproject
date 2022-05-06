@@ -13,12 +13,11 @@ import java.util.*;
 @Component
 public class FireBase {
 
-    private DefaultData defaultData;
+    private FireBaseProperties fireBaseProperties;
 
     public FireBase(Components components) {
-        this.defaultData = components.getDefaultData();
+        this.fireBaseProperties = components.getFireBaseProperties();
     }
-
     private FirebaseOptions option;
     private static Firestore DB;
     private final static String COLLECTION_NAME = "user";
@@ -35,12 +34,12 @@ public class FireBase {
         }
         if (!Optional.ofNullable(firebaseApp).isPresent()) {
             FileInputStream serviceAccount = new FileInputStream(
-                    new File("").getAbsolutePath() + "/" + defaultData.getFireBaseKey()
+                    new File("").getAbsolutePath() + "/" + fireBaseProperties.getFireBaseKey()
             );
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://Egoism.firebaseio.com/")
+                    .setDatabaseUrl(fireBaseProperties.getDatabaseUrl())
                     .build();
             firebaseApp.initializeApp(options);
         }

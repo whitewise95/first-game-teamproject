@@ -1,8 +1,10 @@
 package com.study.spring.components;
 
-public class DefaultData {
+public class FireBaseProperties {
+
     private String secretKey;
     private String fireBaseKey;
+    private String databaseUrl;
 
     public String getSecretKey() {
         return secretKey;
@@ -16,8 +18,17 @@ public class DefaultData {
         return fireBaseKey;
     }
 
-    public DefaultData setFireBaseKey(String fireBaseKey) {
+    public FireBaseProperties setFireBaseKey(String fireBaseKey) {
         this.fireBaseKey = fireBaseKey;
+        return this;
+    }
+
+    public String getDatabaseUrl() {
+        return databaseUrl;
+    }
+
+    public FireBaseProperties setDatabaseUrl(String databaseUrl) {
+        this.databaseUrl = databaseUrl;
         return this;
     }
 }

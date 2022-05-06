@@ -1,19 +1,24 @@
 package com.study.spring.controller;
 
+import com.study.spring.components.*;
 import com.study.spring.domain.User;
-import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequiredArgsConstructor
 public class IndexController {
 
     private final MemberService memberService;
     private final ThreadService threadService;
+    private final Egoism egoism;
+
+    public IndexController(MemberService memberService, ThreadService threadService, Components components) {
+        this.memberService = memberService;
+        this.threadService = threadService;
+        this.egoism = components.getEgoism();
+    }
 
     @RequestMapping("/")
     public String main() {
@@ -35,6 +40,7 @@ public class IndexController {
                          Model model) {
         model.addAttribute("UniqueNumber", UniqueNumber);
         model.addAttribute("platform", platform);
+        model.addAttribute("url", egoism.getBaseUrl());
         return "oAuth2";
     }
 
