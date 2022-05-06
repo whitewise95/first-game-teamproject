@@ -1,7 +1,6 @@
 package com.study.spring.service.common;
 
-import com.google.firebase.auth.UserRecord;
-import com.study.spring.domain.card.SkillCard;
+import com.study.spring.domain.SkillCard;
 import com.study.spring.mapper.MemberMapper;
 import com.study.spring.mapper.common.CommonMapper;
 import org.apache.poi.openxml4j.opc.OPCPackage;

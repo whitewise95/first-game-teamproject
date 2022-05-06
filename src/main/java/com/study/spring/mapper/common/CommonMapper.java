@@ -3,7 +3,7 @@ package com.study.spring.mapper.common;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.*;
 import com.study.spring.components.fireBase.FireBase;
-import com.study.spring.domain.card.SkillCard;
+import com.study.spring.domain.SkillCard;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -2,7 +2,9 @@ package com.study.spring.controller;
 
 import com.study.spring.components.*;
 import com.study.spring.domain.User;
+import com.study.spring.dto.common.resultType.Platform;
 import com.study.spring.service.MemberService;
+import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +40,9 @@ public class IndexController {
     public String oAuth2(@PathVariable("UniqueNumber") String UniqueNumber,
                          @PathVariable("platform") String platform,
                          Model model) {
+        if (!StringUtils.equals(platform, Platform.GOOGLE.getPlatform()) && !StringUtils.equals(platform, Platform.FACEBOOK.getPlatform())) {
+            throw new RuntimeException("플랫폼이 잘못되었습니니다. platform : " + platform);
+        }
         model.addAttribute("UniqueNumber", UniqueNumber);
         model.addAttribute("platform", platform);
         model.addAttribute("url", egoism.getBaseUrl());
@@ -46,9 +51,32 @@ public class IndexController {
 
     @ResponseBody
     @PostMapping("/oauth")
-    public void oAuth2(@RequestBody User user) throws Exception {
-        memberService.socialInsert(user);
+    public void oAuth2(@RequestBody RequestUserOauth requestUserOauth) throws Exception {
+        memberService.socialInsert(requestUserOauth);
         threadService.loginNotify();
+    }
+
+    public class RequestUserOauth extends User {
+        private String uniqueNumber;
+        private String platform;
+
+        public String getUniqueNumber() {
+            return uniqueNumber;
+        }
+
+        public RequestUserOauth setUniqueNumber(String uniqueNumber) {
+            this.uniqueNumber = uniqueNumber;
+            return this;
+        }
+
+        public String getPlatform() {
+            return platform;
+        }
+
+        public RequestUserOauth setPlatform(String platform) {
+            this.platform = platform;
+            return this;
+        }
     }
 
 }

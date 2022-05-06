@@ -1,9 +1,9 @@
 package com.study.spring.service;
 
 import com.study.spring.components.Components;
-import com.study.spring.dto.OAuth;
+import com.study.spring.controller.IndexController;
 import com.study.spring.domain.User;
-import com.study.spring.dto.common.resultType.StatusCode;
+import com.study.spring.dto.OAuth;
 import com.study.spring.mapper.MemberMapper;
 import com.study.spring.service.common.CommonService;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,6 +17,7 @@ import java.util.Optional;
 public class MemberService {
 
     private static final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+    private static final String GUEST = "guest";
 
     private final Components components;
     private final MemberMapper memberMapper;
@@ -30,62 +31,34 @@ public class MemberService {
         this.commonService = commonService;
     }
 
-    public void socialInsert(User user) throws Exception {
-        memberMapper.socialInsert(user);
+    public void socialInsert(IndexController.RequestUserOauth requestUserOauth) throws Exception {
+        OAuth oAuth = OAuth.builder()
+                .uniqueNumber(requestUserOauth.getUniqueNumber())
+                .uid(requestUserOauth.getUid())
+                .build();
+
+        User user = User.builder()
+                .uid(requestUserOauth.getUid())
+                .nickName(GUEST)
+                .email(requestUserOauth.getEmail())
+                .build();
+
+        memberMapper.socialInsert(oAuth);
+        memberMapper.userInsert(user);
     }
 
     public OAuth socialSelect(OAuth oAuth) throws Exception {
         return memberMapper.socialSelect(oAuth);
     }
 
+    public String nickNameChange(User user) throws Exception {
+        User selectUser = Optional.ofNullable(memberMapper.userSelect(user.getUid()))
+                .orElseThrow(() -> new NullPointerException("유저를 찾지 못했습니다. uid :" + user.getUid()));
+        memberMapper.nickNameChange(selectUser);
+        return "저장완료";
+    }
+
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {
         return new SecretKeySpec(secretKeyBytes, signatureAlgorithm.getJcaName());
     }
-
-    public static class ResponseCode {
-        private int statusCode;
-        private String message;
-        private String token;
-        private User user;
-
-        public ResponseCode() {
-        }
-
-        public ResponseCode(StatusCode status, String message) {
-            this.statusCode = status.getStatusCode();
-            this.message = message;
-        }
-
-        public ResponseCode(StatusCode statusCode, String message, String token) {
-            this.statusCode = statusCode.getStatusCode();
-            this.message = message;
-            this.token = token;
-        }
-
-        public int getStatusCode() {
-            return statusCode;
-        }
-
-        public void setStatusCode(int status) {
-            this.statusCode = status;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-    }
-
 }

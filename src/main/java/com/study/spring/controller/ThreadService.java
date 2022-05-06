@@ -1,6 +1,5 @@
 package com.study.spring.controller;
 
-import com.study.spring.domain.User;
 import com.study.spring.dto.OAuth;
 import com.study.spring.mapper.MemberMapper;
 import com.study.spring.service.common.CommonService;
@@ -19,10 +18,10 @@ public class ThreadService extends Thread {
         this.commonService = commonService;
     }
 
-    public synchronized User login(OAuth oAuth) throws Exception {
+    public synchronized OAuth login(OAuth oAuth) throws Exception {
         long beforeTime = System.currentTimeMillis();
         long afterTime = 0;
-        User responseOAuth = null;
+        OAuth responseOAuth = null;
 
         while (true) {
             afterTime = System.currentTimeMillis();
@@ -36,6 +35,7 @@ public class ThreadService extends Thread {
             responseOAuth = memberMapper.socialSelect(oAuth);
             if (Optional.ofNullable(responseOAuth).isPresent()) {
                 responseOAuth.setToken(commonService.createJwt(responseOAuth.getUid()));
+                memberMapper.socialDelete(responseOAuth);
                 break;
             }
         }
