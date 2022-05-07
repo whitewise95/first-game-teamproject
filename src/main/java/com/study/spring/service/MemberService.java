@@ -32,7 +32,7 @@ public class MemberService {
         this.commonService = commonService;
     }
 
-    public void socialInsert(IndexController.RequestUserOauth requestUserOauth) throws Exception {
+    public void socialInsert(IndexController.RequestUserOauth requestUserOauth) {
         OAuth oAuth = OAuth.builder()
                 .uniqueNumber(requestUserOauth.getUniqueNumber())
                 .uid(requestUserOauth.getUid())
@@ -53,7 +53,7 @@ public class MemberService {
         return memberMapper.socialSelect(oAuth);
     }
 
-    public String nickNameChange(User user) throws Exception {
+    public String nickNameChange(User user) {
         User selectUser = Optional.ofNullable(memberMapper.userSelect(user.getUid()))
                 .orElseThrow(() -> new NullPointerException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
         if (StringUtils.equals(selectUser.getNickName(), user.getNickName())) {
@@ -70,6 +70,27 @@ public class MemberService {
                 .orElseThrow(() -> new RuntimeException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
     }
 
+    public User guestLogin(User user) {
+        if (!Optional.ofNullable(memberMapper.socialLogin(user.getUid())).isPresent()) {
+            throw new NullPointerException(String.format("uid : %s를 찾을 수 없습니다.", user.getUid()));
+        }
+
+        User selectUser = memberMapper.userSelect(user.getUid());
+
+        if (Optional.ofNullable(selectUser).isPresent()) {
+            return selectUser;
+        } else {
+            memberMapper.userInsert(user);
+            return User.builder()
+                    .uid(user.getUid())
+                    .email(null)
+                    .nickName(null)
+                    .level(1)
+                    .build();
+        }
+    }
+
+    //사용안하는중
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {
         return new SecretKeySpec(secretKeyBytes, signatureAlgorithm.getJcaName());
     }

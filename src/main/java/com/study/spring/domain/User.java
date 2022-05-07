@@ -1,5 +1,6 @@
 package com.study.spring.domain;
 
+import com.google.firebase.auth.UserRecord;
 import com.study.spring.domain.resultType.*;
 import lombok.*;
 
@@ -26,10 +27,19 @@ public class User {
     private List<Costume> costumes = new ArrayList<>();
 
     @Builder
-    public User(String uid, String email, String nickName) {
+    public User(String uid, String email, String nickName, int level) {
         this.uid = uid;
         this.email = email;
         this.nickName = nickName;
+        this.level = level;
+    }
+
+    public User toUser(UserRecord userRecord) {
+        return User.builder()
+                .uid(userRecord.getUid())
+                .nickName(null)
+                .email("guest")
+                .build();
     }
 
     @Getter
@@ -42,10 +52,10 @@ public class User {
         private int cardExp;
 
         @Builder
-        public Card(int number, String skillName, int cardLevel, int cardExp) {
+        public Card(int number, String skillName, int cardExp) {
             this.number = number;
             this.skillName = skillName;
-            this.cardLevel = cardLevel;
+            this.cardLevel = 1;
             this.cardExp = cardExp;
         }
     }

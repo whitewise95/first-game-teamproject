@@ -58,22 +58,29 @@ public class MemberController {
 
     @PostMapping("/nickNameChange")
     public String nickNameChange(@Validated(NickName.class) User user) {
-        try {
-            return memberService.nickNameChange(user);
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+        return memberService.nickNameChange(user);
     }
 
     @PostMapping("/userInfo")
-    public User userInfo(@Validated(Login.class) User user) throws Exception {
+    public User userInfo(@Validated(Login.class) User user) {
         return memberService.userinfo(user);
+    }
+
+    @PostMapping("/guestLogin")
+    public User guestLogin(@Validated(Login.class) User user) {
+        return memberService.guestLogin(user);
     }
 
     @ExceptionHandler(NullPointerException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public void notFound(Exception e) {
-        logger.warn(e.getMessage(), e);
+    public NullPointerException notFound(NullPointerException e) {
+        return e;
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public RuntimeException internalServer(RuntimeException e) {
+        return e;
     }
 
 }
