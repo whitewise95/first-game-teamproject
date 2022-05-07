@@ -18,9 +18,8 @@ public class FireBase {
     public FireBase(Components components) {
         this.fireBaseProperties = components.getFireBaseProperties();
     }
-    private FirebaseOptions option;
+
     private static Firestore DB;
-    private final static String COLLECTION_NAME = "user";
 
     public void dbInit() throws Exception {
         FirebaseApp firebaseApp = null;
@@ -46,7 +45,6 @@ public class FireBase {
     }
 
     public static Firestore makeDatabaseConn() {
-        //Firestore 인스턴스 생성
         return DB = FirestoreClient.getFirestore();
     }
 

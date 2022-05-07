@@ -40,7 +40,7 @@ public class MemberService {
 
         User user = User.builder()
                 .uid(requestUserOauth.getUid())
-                .nickName(GUEST)
+                .nickName(null)
                 .email(requestUserOauth.getEmail())
                 .build();
 
@@ -48,17 +48,26 @@ public class MemberService {
         memberMapper.userInsert(user);
     }
 
+    //사용아직안하는중
     public OAuth socialSelect(OAuth oAuth) throws Exception {
         return memberMapper.socialSelect(oAuth);
     }
 
     public String nickNameChange(User user) throws Exception {
         User selectUser = Optional.ofNullable(memberMapper.userSelect(user.getUid()))
-                .orElseThrow(() -> new NullPointerException("유저를 찾지 못했습니다. uid :" + user.getUid()));
-        if(Optional.ofNullable(memberMapper.nickNameSelect(user.getNickName())).isPresent()) {
-            return "overlap";
+                .orElseThrow(() -> new NullPointerException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
+        if (StringUtils.equals(selectUser.getNickName(), user.getNickName())) {
+            throw new RuntimeException("변경된 사항이 없습니다.");
         }
-        return memberMapper.nickNameChange(selectUser);
+        if (memberMapper.nickNameSelect(user.getNickName()) > 0) {
+            throw new RuntimeException(String.format("%s 는 이미 사용중입니다.", user.getNickName()));
+        }
+        return memberMapper.nickNameChange(user);
+    }
+
+    public User userinfo(User user) {
+        return Optional.ofNullable(memberMapper.userSelect(user.getUid()))
+                .orElseThrow(() -> new RuntimeException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
     }
 
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {

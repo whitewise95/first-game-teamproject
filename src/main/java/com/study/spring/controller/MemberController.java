@@ -1,12 +1,12 @@
 package com.study.spring.controller;
 
-import com.study.spring.domain.*;
+import com.study.spring.domain.User;
 import com.study.spring.domain.resultType.*;
 import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
 import com.study.spring.service.common.CommonService;
-import org.apache.commons.codec.binary.StringUtils;
 import org.slf4j.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,13 +56,26 @@ public class MemberController {
         return threadService.login(oAuth).getUid();
     }
 
-    @PostMapping("/nickName")
-    public String nickName(@Validated(NickName.class) User user) throws Exception {
-        if(StringUtils.equals(user.getNickName(), "guest")) {
-            throw new RuntimeException("[guest]는 사용할 수 없는 닉네임입니다.");
+    @PostMapping("/nickNameChange")
+    public String nickNameChange(@Validated(NickName.class) User user) {
+        try {
+            return memberService.nickNameChange(user);
+        } catch (Exception e) {
+            return e.getMessage();
         }
-        return memberService.nickNameChange(user);
+    }
+
+    @PostMapping("/userInfo")
+    public User userInfo(@Validated(Login.class) User user) throws Exception {
+        return memberService.userinfo(user);
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public void notFound(Exception e) {
+        logger.warn(e.getMessage(), e);
     }
 
 }
+
 

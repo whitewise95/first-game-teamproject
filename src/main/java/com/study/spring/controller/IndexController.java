@@ -56,7 +56,7 @@ public class IndexController {
         threadService.loginNotify();
     }
 
-    public class RequestUserOauth extends User {
+    public static class RequestUserOauth extends User {
         private String uniqueNumber;
         private String platform;
 

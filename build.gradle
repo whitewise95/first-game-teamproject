@@ -5,8 +5,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
-        mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -31,8 +29,6 @@ apply plugin: 'io.spring.dependency-management'
 repositories {
     google()
     mavenCentral()
-    jcenter()
-    mavenCentral()
 }
 
 dependencies {
@@ -41,8 +37,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     //junit
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
     //mustache
     implementation('org.springframework.boot:spring-boot-starter-mustache')
@@ -50,7 +46,7 @@ dependencies {
     //fireBase
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-admin:8.1.0'
-    implementation platform('com.google.firebase:firebase-bom:29.2.0')
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation group: 'com.google.firebase', name: 'firebase-auth', version: '21.0.3'
     implementation 'com.google.firebase:firebase-auth'
 
@@ -78,9 +74,6 @@ dependencies {
     //poi
     implementation group: 'org.apache.poi', name: 'poi', version: '4.1.2'        // HSSFWorkbook 사용가능
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.2'
-
-
-
 }
 
 test {

@@ -7,7 +7,7 @@ import com.study.spring.domain.User;
 import com.study.spring.dto.OAuth;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class MemberMapper {
@@ -46,6 +46,24 @@ public class MemberMapper {
 
     public void userInsert(User user) throws Exception {
         Firestore db = newCreateFireBase();
+        User.Card card1 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Human").number(1).build();
+        User.Card card2 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Human").number(2).build();
+        User.Card card3 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Hunter").number(1).build();
+        User.Card card4 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Hunter").number(2).build();
+        User.Card card5 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Common").number(1).build();
+        User.Card card6 = User.Card.builder().cardExp(0).cardLevel(1).skillName("Common").number(2).build();
+        user.getCardList().add(card1);
+        user.getCardList().add(card2);
+        user.getCardList().add(card3);
+        user.getCardList().add(card4);
+        user.getCardList().add(card5);
+        user.getCardList().add(card6);
+
+        User.Costume costume1 = new User.Costume(1);
+        User.Costume costume2 = new User.Costume(2);
+        user.getCostumes().add(costume1);
+        user.getCostumes().add(costume2);
+
         db.collection("user").document(user.getUid()).set(user);
     }
 
@@ -54,9 +72,13 @@ public class MemberMapper {
         return FirebaseAuth.getInstance().getUser(uid);
     }
 
-    public User userSelect(String uid) throws Exception {
-        Firestore db = newCreateFireBase();
-        return db.collection("user").document(uid).get().get().toObject(User.class);
+    public User userSelect(String uid) {
+        try {
+            Firestore db = newCreateFireBase();
+            return db.collection("user").document(uid).get().get().toObject(User.class);
+        }catch (Exception e) {
+            return new User();
+        }
     }
 
     public String nickNameChange(User user) {
@@ -70,8 +92,9 @@ public class MemberMapper {
         }
     }
 
-    public List<QueryDocumentSnapshot> nickNameSelect(String nickName) throws Exception {
+    public int nickNameSelect(String nickName) throws Exception {
         Firestore db = newCreateFireBase();
-        return db.collection("cities").whereEqualTo("nickName", nickName).get().get().getDocuments();
+        List<QueryDocumentSnapshot> documents = db.collection("user").whereEqualTo("nickName", nickName).get().get().getDocuments();
+        return documents.size();
     }
 }
