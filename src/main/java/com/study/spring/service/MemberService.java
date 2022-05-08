@@ -55,7 +55,7 @@ public class MemberService {
 
     public String nickNameChange(User user) {
         User selectUser = Optional.ofNullable(memberMapper.userSelect(user.getUid()))
-                .orElseThrow(() -> new NullPointerException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
+                .orElseThrow(() -> new RuntimeException(String.format("%s 에 대한 정보를 찾지못했습니다.", user.getUid())));
         if (StringUtils.equals(selectUser.getNickName(), user.getNickName())) {
             throw new RuntimeException("변경된 사항이 없습니다.");
         }
@@ -67,12 +67,12 @@ public class MemberService {
 
     public User userinfo(User user) {
         return Optional.ofNullable(memberMapper.userSelect(user.getUid()))
-                .orElseThrow(() -> new RuntimeException(String.format("uid : %s 에 대한 정보를 찾지못했습니다.", user.getUid())));
+                .orElseThrow(() -> new RuntimeException(String.format("%s 에 대한 정보를 찾지못했습니다.", user.getUid())));
     }
 
-    public User guestLogin(User user) {
-        if (!Optional.ofNullable(memberMapper.socialLogin(user.getUid())).isPresent()) {
-            throw new NullPointerException(String.format("uid : %s를 찾을 수 없습니다.", user.getUid()));
+    public User guestSelect(User user) {
+        if (!Optional.ofNullable(memberMapper.guestSelect(user.getUid())).isPresent()) {
+            throw new RuntimeException(String.format("%s에 대한 정보를 찾지못했습니다.", user.getUid()));
         }
 
         User selectUser = memberMapper.userSelect(user.getUid());
@@ -81,12 +81,7 @@ public class MemberService {
             return selectUser;
         } else {
             memberMapper.userInsert(user);
-            return User.builder()
-                    .uid(user.getUid())
-                    .email(null)
-                    .nickName(null)
-                    .level(1)
-                    .build();
+            return memberMapper.userSelect(user.getUid());
         }
     }
 

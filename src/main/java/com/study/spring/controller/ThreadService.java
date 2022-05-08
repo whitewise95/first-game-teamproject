@@ -18,7 +18,7 @@ public class ThreadService extends Thread {
         this.commonService = commonService;
     }
 
-    public synchronized OAuth login(OAuth oAuth) throws Exception {
+    public synchronized String login(OAuth oAuth) throws Exception {
         long beforeTime = System.currentTimeMillis();
         long afterTime = 0;
         OAuth responseOAuth = null;
@@ -39,7 +39,7 @@ public class ThreadService extends Thread {
                 break;
             }
         }
-        return responseOAuth;
+        return responseOAuth.getUid();
     }
 
     public synchronized void loginNotify() {

@@ -24,7 +24,7 @@ public class User {
     private int normalItem;
     private int luxuryItem;
     private List<Card> cardList = new ArrayList<>();
-    private List<Costume> costumes = new ArrayList<>();
+    private List<Costume> costumeList = new ArrayList<>();
 
     @Builder
     public User(String uid, String email, String nickName, int level) {
@@ -32,14 +32,6 @@ public class User {
         this.email = email;
         this.nickName = nickName;
         this.level = level;
-    }
-
-    public User toUser(UserRecord userRecord) {
-        return User.builder()
-                .uid(userRecord.getUid())
-                .nickName(null)
-                .email("guest")
-                .build();
     }
 
     @Getter
@@ -52,10 +44,10 @@ public class User {
         private int cardExp;
 
         @Builder
-        public Card(int number, String skillName, int cardExp) {
+        public Card(int number, String skillName, int cardExp, int cardLevel) {
             this.number = number;
             this.skillName = skillName;
-            this.cardLevel = 1;
+            this.cardLevel = cardLevel;
             this.cardExp = cardExp;
         }
     }

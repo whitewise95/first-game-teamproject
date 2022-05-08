@@ -6,7 +6,6 @@ import com.study.spring.dto.OAuth;
 import com.study.spring.service.MemberService;
 import com.study.spring.service.common.CommonService;
 import org.slf4j.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +52,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(@Validated(Login.class) OAuth oAuth) throws Exception {
-        return threadService.login(oAuth).getUid();
+        return threadService.login(oAuth);
     }
 
     @PostMapping("/nickNameChange")
@@ -66,21 +65,9 @@ public class MemberController {
         return memberService.userinfo(user);
     }
 
-    @PostMapping("/guestLogin")
-    public User guestLogin(@Validated(Login.class) User user) {
-        return memberService.guestLogin(user);
-    }
-
-    @ExceptionHandler(NullPointerException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public NullPointerException notFound(NullPointerException e) {
-        return e;
-    }
-
-    @ExceptionHandler(RuntimeException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public RuntimeException internalServer(RuntimeException e) {
-        return e;
+    @PostMapping("/guestSelect")
+    public User guestGuest(@Validated(Login.class) User user) {
+        return memberService.guestSelect(user);
     }
 
 }
