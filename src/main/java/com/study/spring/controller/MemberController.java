@@ -3,7 +3,7 @@ package com.study.spring.controller;
 import com.study.spring.domain.User;
 import com.study.spring.domain.resultType.*;
 import com.study.spring.dto.OAuth;
-import com.study.spring.service.MemberService;
+import com.study.spring.service.*;
 import com.study.spring.service.common.CommonService;
 import org.slf4j.*;
 import org.springframework.validation.annotation.Validated;

@@ -3,7 +3,7 @@ package com.study.spring.controller;
 import com.study.spring.components.*;
 import com.study.spring.domain.User;
 import com.study.spring.dto.common.resultType.Platform;
-import com.study.spring.service.MemberService;
+import com.study.spring.service.*;
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.study.spring.controller;
+package com.study.spring.service;
 
 import com.study.spring.dto.OAuth;
 import com.study.spring.mapper.MemberMapper;
