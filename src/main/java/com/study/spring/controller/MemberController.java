@@ -26,12 +26,12 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody @Validated(Login.class) OAuth oAuth) {
+    public String login(@Validated(Login.class) OAuth oAuth) {
          return memberService.login(oAuth);
     }
 
     @PostMapping("/nickNameChange")
-    public String nickNameChange(@RequestBody @Validated(NickName.class) User user) {
+    public String nickNameChange(@Validated(NickName.class) User user) {
         return memberService.nickNameChange(user);
     }
 
