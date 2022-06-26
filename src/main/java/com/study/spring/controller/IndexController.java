@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
 
     private final MemberService memberService;
-    private final ThreadService threadService;
     private final Egoism egoism;
 
-    public IndexController(MemberService memberService, ThreadService threadService, Components components) {
+    public IndexController(MemberService memberService,
+                           Components components) {
         this.memberService = memberService;
-        this.threadService = threadService;
         this.egoism = components.getEgoism();
     }
 
@@ -51,9 +50,8 @@ public class IndexController {
 
     @ResponseBody
     @PostMapping("/oauth")
-    public void oAuth2(@RequestBody RequestUserOauth requestUserOauth) throws Exception {
+    public void oAuth2(@RequestBody RequestUserOauth requestUserOauth) {
         memberService.socialInsert(requestUserOauth);
-        threadService.loginNotify();
     }
 
     public static class RequestUserOauth extends User {

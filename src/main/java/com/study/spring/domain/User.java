@@ -1,22 +1,23 @@
 package com.study.spring.domain;
 
-import com.google.firebase.auth.UserRecord;
 import com.study.spring.domain.resultType.*;
 import lombok.*;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 import java.util.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class User {
-    @NotEmpty(groups = { NickName.class , Login.class }, message = "uid는 반드시 존재해야합니다.")
+    @NotEmpty(groups = { NickName.class, Login.class, Update.class }, message = "uid는 반드시 존재해야합니다.")
     private String uid;
     private String email;
+    @NotNull(groups = { Update.class }, message = "exp 반드시 존재해야합니다.")
     private float exp;
+    @NotNull(groups = { Update.class }, message = "gold 반드시 존재해야합니다.")
     private int gold;
+    @NotNull(groups = { Update.class }, message = "level 반드시 존재해야합니다.")
     private int level;
     private int cardPiece;
     @NotEmpty(groups = { NickName.class }, message = "nickName 반드시 존재해야합니다.")
@@ -34,8 +35,7 @@ public class User {
         this.level = level;
     }
 
-    @Getter
-    @Setter
+    @Data
     @NoArgsConstructor
     public static class Card {
         private int number;
@@ -52,11 +52,10 @@ public class User {
         }
     }
 
-    @Getter
-    @Setter
+    @Data
     @NoArgsConstructor
     public static class Costume {
-        private	int	number;
+        private int number;
 
         public Costume(int number) {
             this.number = number;

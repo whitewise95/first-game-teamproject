@@ -3,6 +3,7 @@ package com.study.spring.controller;
 import com.study.spring.domain.User;
 import com.study.spring.domain.resultType.*;
 import com.study.spring.dto.OAuth;
+import com.study.spring.mapper.MemberMapper;
 import com.study.spring.service.*;
 import com.study.spring.service.common.CommonService;
 import org.slf4j.*;
@@ -17,46 +18,20 @@ public class MemberController {
 
     private final MemberService memberService;
     private final CommonService commonService;
-    private final ThreadService threadService;
 
-    public MemberController(MemberService memberService, CommonService commonService, ThreadService threadService) {
+    public MemberController(MemberService memberService,
+                            CommonService commonService) {
         this.memberService = memberService;
         this.commonService = commonService;
-        this.threadService = threadService;
     }
 
-    /*
-     * Oauth2 유저 값 세션 저장 후 창 띄어주기
-     *
-     * */
-    //    @PostMapping("/login")
-    //    public String login(@RequestBody @Validated(Login.class) OAuth oAuth) throws Exception {
-    //        if(!platformCheck(oAuth.getPlatform())){
-    //            return "not find platform :"+ oAuth.getPlatform();
-    //        }
-    //        OAuth responseOAuth = null;
-    //        String token = null;
-    //        while (true) {
-    //            responseOAuth = memberService.socialSelect(oAuth);
-    //            if (Optional.ofNullable(responseOAuth).isPresent()) {
-    //                token = commonService.createJwt(responseOAuth.getUid());
-    //                break;
-    //            }
-    //            if (cnt > 100000) {
-    //                break;
-    //            }
-    //            cnt++;
-    //        }
-    //        return token;
-    //    }
-
     @PostMapping("/login")
-    public String login(@Validated(Login.class) OAuth oAuth) throws Exception {
-        return threadService.login(oAuth);
+    public String login(@RequestBody @Validated(Login.class) OAuth oAuth) {
+         return memberService.login(oAuth);
     }
 
     @PostMapping("/nickNameChange")
-    public String nickNameChange(@Validated(NickName.class) User user) {
+    public String nickNameChange(@RequestBody @Validated(NickName.class) User user) {
         return memberService.nickNameChange(user);
     }
 
@@ -69,7 +44,6 @@ public class MemberController {
     public User guestGuest(@Validated(Login.class) User user) {
         return memberService.guestSelect(user);
     }
-
 }
 
 

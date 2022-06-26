@@ -2,7 +2,6 @@ components:
   fireBase-properties:
     secret-key: 'AYASDI_ICUHDHDSEK_SKIMS'
     fire-base-key: 'egoism-3af0d-firebase-adminsdk-ilve2-f2c4f6863e.json'
-    database-url: 'https://Egoism.firebaseio.com/'
 spring:
   servlet:
     multipart:

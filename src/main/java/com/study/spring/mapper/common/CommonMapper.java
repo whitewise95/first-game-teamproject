@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.study.spring.mapper.MemberMapper.DEFAULT_DATABASE;
+
 @Repository
 public class CommonMapper {
 
@@ -18,7 +20,7 @@ public class CommonMapper {
     }
 
     public Firestore newCreateFireBase() throws Exception {
-        fireBase.dbInit();
+        fireBase.dbInit(DEFAULT_DATABASE);
         return fireBase.makeDatabaseConn();
     }
 

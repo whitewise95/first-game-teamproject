@@ -45,7 +45,10 @@ public class MemberService {
                 .build();
 
         memberMapper.socialInsert(oAuth);
-        memberMapper.userInsert(user);
+
+        if(!Optional.ofNullable(memberMapper.userSelect(user.getUid())).isPresent()) {
+            memberMapper.userInsert(user);
+        }
     }
 
     //사용아직안하는중
@@ -88,5 +91,9 @@ public class MemberService {
     //사용안하는중
     public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {
         return new SecretKeySpec(secretKeyBytes, signatureAlgorithm.getJcaName());
+    }
+
+    public String login(OAuth oAuth) {
+        return memberMapper.login(oAuth);
     }
 }

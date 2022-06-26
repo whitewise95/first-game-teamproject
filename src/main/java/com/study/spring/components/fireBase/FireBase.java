@@ -21,7 +21,7 @@ public class FireBase {
 
     private static Firestore DB;
 
-    public void dbInit() throws Exception {
+    public void dbInit(String dataBaseUrl) throws Exception {
         FirebaseApp firebaseApp = null;
         List<FirebaseApp> fireApp = FirebaseApp.getApps();
 
@@ -38,7 +38,7 @@ public class FireBase {
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl(fireBaseProperties.getDatabaseUrl())
+                    .setDatabaseUrl(dataBaseUrl)
                     .build();
             firebaseApp.initializeApp(options);
         }

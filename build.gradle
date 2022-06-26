@@ -37,8 +37,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     //junit
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'junit:junit:4.13.1'
 
     //mustache
     implementation('org.springframework.boot:spring-boot-starter-mustache')
@@ -52,6 +51,7 @@ dependencies {
 
     //jwt
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
     //sftp
     implementation group: 'com.jcraft', name: 'jsch', version: '0.1.54'
 
@@ -64,6 +64,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation("org.junit.vintage:junit-vintage-engine") {exclude group: "org.hamcrest", module: "hamcrest-core" }
 
     //가져온 spring
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
