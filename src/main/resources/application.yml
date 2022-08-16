@@ -30,4 +30,4 @@ spring:
   profiles: prod
 components:
   egoism:
-    base-url: 'http://wisebookshop.com/'
+    base-url: 'http://whitewise.shop'
