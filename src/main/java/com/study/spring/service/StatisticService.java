@@ -1,7 +1,7 @@
 package com.study.spring.service;
 
 import com.study.spring.domain.User;
-import com.study.spring.mapper.*;
+import com.study.spring.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -9,16 +9,16 @@ import java.util.*;
 @Service
 public class StatisticService {
 
-    private final StatisticMapper abilityMapper;
-    private final MemberMapper memberMapper;
+    private final StatisticRepository abilityMapper;
+    private final MemberRepository memberRepository;
 
-    public StatisticService(StatisticMapper abilityMapper, MemberMapper memberMapper) {
+    public StatisticService(StatisticRepository abilityMapper, MemberRepository memberRepository) {
         this.abilityMapper = abilityMapper;
-        this.memberMapper = memberMapper;
+        this.memberRepository = memberRepository;
     }
 
     public String defaultChange(User user) {
-        Optional.ofNullable(memberMapper.userSelect(user.getUid()))
+        Optional.ofNullable(memberRepository.userSelect(user.getUid()))
                 .ifPresent(selectUser -> {
                     Map<String, Object> updateUserInfo = new HashMap<>();
                     updateUserInfo.put("uid", user.getUid());

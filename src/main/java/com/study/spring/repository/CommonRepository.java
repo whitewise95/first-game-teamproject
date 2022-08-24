@@ -1,4 +1,4 @@
-package com.study.spring.mapper.common;
+package com.study.spring.repository;
 
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.*;
@@ -8,19 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.study.spring.mapper.MemberMapper.DEFAULT_DATABASE;
+import static com.study.spring.domain.resultType.DataBaseType.DEFAULT_DATABASE;
 
 @Repository
-public class CommonMapper {
+public class CommonRepository {
 
     private FireBase fireBase;
 
-    public CommonMapper(FireBase fireBase) {
+    public CommonRepository(FireBase fireBase) {
         this.fireBase = fireBase;
     }
 
     public Firestore newCreateFireBase() throws Exception {
-        fireBase.dbInit(DEFAULT_DATABASE);
+        fireBase.dbInit(DEFAULT_DATABASE.getType());
         return fireBase.makeDatabaseConn();
     }
 
