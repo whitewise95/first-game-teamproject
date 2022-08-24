@@ -1,7 +1,7 @@
 package com.study.spring.controller;
 
 import com.study.spring.dto.OAuth;
-import com.study.spring.mapper.MemberMapper;
+import com.study.spring.repository.MemberRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class memberControllerTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private MemberMapper memberMapper;
+    private MemberRepository memberRepository;
 
     @Test
     public void 소설로그인() throws Exception {

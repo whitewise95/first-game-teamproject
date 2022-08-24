@@ -1,8 +1,8 @@
-package com.study.spring.service.common;
+package com.study.spring.service;
 
 import com.study.spring.domain.SkillCard;
-import com.study.spring.mapper.MemberMapper;
-import com.study.spring.mapper.common.CommonMapper;
+import com.study.spring.repository.MemberRepository;
+import com.study.spring.repository.CommonRepository;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ import java.util.*;
 @Service
 public class CommonService {
 
-    private final CommonMapper commonMapper;
-    private final MemberMapper memberMapper;
+    private final CommonRepository commonRepository;
+    private final MemberRepository memberRepository;
 
-    public CommonService(CommonMapper commonMapper, MemberMapper memberMapper) {
-        this.commonMapper = commonMapper;
-        this.memberMapper = memberMapper;
+    public CommonService(CommonRepository commonRepository, MemberRepository memberRepository) {
+        this.commonRepository = commonRepository;
+        this.memberRepository = memberRepository;
     }
 
     /*
@@ -54,7 +54,7 @@ public class CommonService {
                 skillCardList.add(skillCard);
             }
 
-            commonMapper.insertDbData(skillCardList, dbName, pk);
+            commonRepository.insertDbData(skillCardList, dbName, pk);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +94,7 @@ public class CommonService {
     }
 
     public String createJwt(String uid) throws Exception {
-        return commonMapper.createJwt(memberMapper.findUserToUid(uid).getUid());
+        return commonRepository.createJwt(memberRepository.findUserToUid(uid).getUid());
     /*
         jwt토큰
             return Jwts.builder()
@@ -107,7 +107,7 @@ public class CommonService {
     }
 
     public String getJwt(String idToken) throws Exception {
-        return commonMapper.getJwt(idToken);
+        return commonRepository.getJwt(idToken);
     /*
         jwt
         try {

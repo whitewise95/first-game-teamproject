@@ -1,7 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.service.common.CommonService;
-import lombok.NoArgsConstructor;
+import com.study.spring.service.CommonService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 

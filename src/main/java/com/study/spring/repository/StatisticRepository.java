@@ -1,4 +1,4 @@
-package com.study.spring.mapper;
+package com.study.spring.repository;
 
 import com.google.cloud.firestore.*;
 import com.study.spring.components.fireBase.FireBase;
@@ -7,19 +7,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
-import static com.study.spring.mapper.MemberMapper.DEFAULT_DATABASE;
+import static com.study.spring.domain.resultType.DataBaseType.DEFAULT_DATABASE;
 
 @Repository
-public class StatisticMapper {
+public class StatisticRepository {
 
     private final FireBase fireBase;
 
-    public StatisticMapper(FireBase fireBase) {
+    public StatisticRepository(FireBase fireBase) {
         this.fireBase = fireBase;
     }
 
     public Firestore newCreateFireBase() throws Exception {
-        fireBase.dbInit(DEFAULT_DATABASE);
+        fireBase.dbInit(DEFAULT_DATABASE.getType());
         return fireBase.makeDatabaseConn();
     }
 

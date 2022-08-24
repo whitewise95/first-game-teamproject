@@ -1,4 +1,4 @@
-package com.study.spring.mapper;
+package com.study.spring.repository;
 
 import com.google.cloud.firestore.*;
 import com.google.firebase.auth.*;
@@ -11,15 +11,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class MemberMapper {
+import static com.study.spring.domain.resultType.DataBaseType.*;
 
-    public final static String DEFAULT_DATABASE = "https://Egoism.firebaseio.com/";
-    public final static String REAL_TIME_DATABASE = "https://egoism-3af0d-default-rtdb.firebaseio.com/";
+@Repository
+public class MemberRepository {
 
     private FireBase fireBase;
 
-    public MemberMapper(FireBase fireBase) {
+    public MemberRepository(FireBase fireBase) {
         this.fireBase = fireBase;
     }
 
@@ -30,7 +29,7 @@ public class MemberMapper {
 
     public UserRecord guestSelect(String uid) {
         try {
-            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             return FirebaseAuth.getInstance().getUser(uid);
         } catch (Exception e) {
             return null;
@@ -38,19 +37,19 @@ public class MemberMapper {
     }
 
     public OAuth socialSelect(OAuth oAuth) throws Exception {
-        Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+        Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
         OAuth responseOAuth = db.collection(DataBaseTable.SOCIAL.getTable()).document(oAuth.getUniqueNumber()).get().get().toObject(OAuth.class);
         return responseOAuth;
     }
 
     public void socialDelete(OAuth responseOAuth) throws Exception {
-        Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+        Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
         db.collection(DataBaseTable.SOCIAL.getTable()).document(responseOAuth.getUniqueNumber()).delete();
     }
 
     public void socialInsert(OAuth oAuth) {
         try {
-            newCreateFireBase(REAL_TIME_DATABASE);
+            newCreateFireBase(REAL_TIME_DATABASE.getType());
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
             ref.child(oAuth.getUniqueNumber()).setValueAsync(oAuth.getUid());
         } catch (Exception e) {
@@ -77,7 +76,7 @@ public class MemberMapper {
                 user.getCostumeList().add(new User.Costume(i));
             }
             user.setLevel(1);
-            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             db.collection(DataBaseTable.USER.getTable()).document(user.getUid()).set(user);
         } catch (Exception e) {
             throw new RuntimeException("MemberMapper.userInsert 시스템오류 : " + e.getMessage());
@@ -85,13 +84,13 @@ public class MemberMapper {
     }
 
     public UserRecord findUserToUid(String uid) throws Exception {
-        Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+        Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
         return FirebaseAuth.getInstance().getUser(uid);
     }
 
     public User userSelect(String uid) {
         try {
-            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             return db.collection(DataBaseTable.USER.getTable()).document(uid).get().get().toObject(User.class);
         } catch (Exception e) {
             throw new RuntimeException("시스템 오류 : " + e.getMessage());
@@ -100,7 +99,7 @@ public class MemberMapper {
 
     public String nickNameChange(User user) {
         try {
-            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             DocumentReference docRef = db.collection(DataBaseTable.USER.getTable()).document(user.getUid());
             docRef.update("nickName", user.getNickName());
             return user.getNickName();
@@ -111,7 +110,7 @@ public class MemberMapper {
 
     public int nickNameSelect(String nickName) {
         try {
-            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             List<QueryDocumentSnapshot> documents = db.collection(DataBaseTable.USER.getTable())
                     .whereEqualTo("nickName", nickName).get().get().getDocuments();
             return documents.size();
@@ -122,7 +121,7 @@ public class MemberMapper {
 
     public String login(OAuth oAuth) {
         try {
-            Firestore db = newCreateFireBase(REAL_TIME_DATABASE);
+            Firestore db = newCreateFireBase(REAL_TIME_DATABASE.getType());
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
             ref.child(oAuth.getUniqueNumber()).setValueAsync(DataBaseTable.USER.getTable());

@@ -2,7 +2,9 @@ package com.study.spring.dto.common.resultType;
 
 public enum DataBaseTable {
     USER("user"),
-    SOCIAL("social");
+    SOCIAL("social"),
+    WAIT_ROOM_CARD("waitRoomCard"),
+    WAIT_ROOM_COSTUME("waitRoomCostume");
 
     private String table;
 
