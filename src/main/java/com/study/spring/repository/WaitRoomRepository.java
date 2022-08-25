@@ -11,7 +11,7 @@ import java.util.*;
 
 import static com.study.spring.domain.resultType.DataBaseType.DEFAULT_DATABASE;
 import static com.study.spring.dto.common.resultType.DataBaseTable.WAIT_ROOM_CARD;
-import static com.study.spring.exceptionHandler.CustumException.ErrorCode.FAIL_DATABASE_SAVE;
+import static com.study.spring.exceptionHandler.CustumException.ErrorCode.*;
 
 @Repository
 public class WaitRoomRepository {
@@ -28,10 +28,12 @@ public class WaitRoomRepository {
         return fireBase.makeDatabaseConn();
     }
 
-    public MessageResponseDto cardArrangement(Map<String, List<CardCoordinate>> waitRoomMap, String key, String uid) {
+    public MessageResponseDto cardArrangementUpdate(Map<String, List<CardCoordinate>> waitRoomMap, String key, String uid) {
         try {
             Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
-            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable()).document(uid);
+
+            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable())
+                    .document(uid);
             docRef.update(key, waitRoomMap.get(key));
         } catch (Exception e) {
             throw new CustomException(FAIL_DATABASE_SAVE);
@@ -39,11 +41,51 @@ public class WaitRoomRepository {
         return new MessageResponseDto(200, "저장되었습니다.");
     }
 
-    public MessageResponseDto costumeArrangement(WaitRequestDto waitRequestDto) {
+    public MessageResponseDto costumeArrangementUpdate(WaitRequestDto waitRequestDto) {
         try {
             Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
-            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable()).document(waitRequestDto.getUid());
+
+            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable())
+                    .document(waitRequestDto.getUid());
             docRef.update(CURRENT_CUSTOM_NUM, waitRequestDto.getCurrentCustomNum());
+        } catch (Exception e) {
+            throw new CustomException(FAIL_DATABASE_SAVE);
+        }
+        return new MessageResponseDto(200, "저장되었습니다.");
+    }
+
+    public Boolean existTable(String uid) {
+        try {
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
+            return db.collection(WAIT_ROOM_CARD.getTable())
+                    .document(uid).get().get()
+                    .exists();
+        } catch (Exception e) {
+            throw new CustomException(FAIL_DATABASE_FIND);
+        }
+    }
+
+    public MessageResponseDto cardArrangementSet(Map<String, List<CardCoordinate>> waitRoomMap, String key, String uid) {
+        try {
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
+            db.collection(WAIT_ROOM_CARD.getTable())
+                    .document(uid)
+                    .set(waitRoomMap);
+        } catch (Exception e) {
+            throw new CustomException(FAIL_DATABASE_SAVE);
+        }
+        return new MessageResponseDto(200, "저장되었습니다.");
+    }
+
+    public MessageResponseDto costumeArrangementSet(WaitRequestDto waitRequestDto) {
+        try {
+            Map<String, Integer> waitRoomMap = new HashMap<>();
+            waitRoomMap.put(CURRENT_CUSTOM_NUM, waitRequestDto.getCurrentCustomNum());
+
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
+            db.collection(WAIT_ROOM_CARD.getTable())
+                    .document(waitRequestDto.getUid())
+                    .set(waitRoomMap);
         } catch (Exception e) {
             throw new CustomException(FAIL_DATABASE_SAVE);
         }

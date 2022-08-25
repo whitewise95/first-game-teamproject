@@ -2,19 +2,24 @@ package com.study.spring.service;
 
 import com.study.spring.domain.CardCoordinate;
 import com.study.spring.dto.*;
-import com.study.spring.repository.WaitRoomRepository;
+import com.study.spring.exceptionHandler.CustumException.CustomException;
+import com.study.spring.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
+import static com.study.spring.exceptionHandler.CustumException.ErrorCode.NOT_FIND_USER;
 
 @Service
 public class WaitRoomService {
 
     private final String LIST = "List";
     private final WaitRoomRepository waitRoomRepository;
+    private final MemberRepository memberRepository;
 
-    public WaitRoomService(WaitRoomRepository waitRoomRepository) {
+    public WaitRoomService(WaitRoomRepository waitRoomRepository, MemberRepository memberRepository) {
         this.waitRoomRepository = waitRoomRepository;
+        this.memberRepository = memberRepository;
     }
 
     public MessageResponseDto cardArrangement(WaitRequestDto waitRequestDto, String cardType) {
@@ -22,7 +27,15 @@ public class WaitRoomService {
         String key = cardType + LIST;
 
         waitRoomMap.put(key, DtoListToEntityList(waitRequestDto));
-        return waitRoomRepository.cardArrangement(
+
+        if (!isExistUserWithRestRoomTableExist(waitRequestDto.getUid())) {
+            return waitRoomRepository.cardArrangementSet(
+                    waitRoomMap,
+                    key,
+                    waitRequestDto.getUid()
+            );
+        }
+        return waitRoomRepository.cardArrangementUpdate(
                 waitRoomMap,
                 key,
                 waitRequestDto.getUid()
@@ -30,16 +43,31 @@ public class WaitRoomService {
     }
 
     public MessageResponseDto costumeArrangement(WaitRequestDto waitRequestDto) {
-        return waitRoomRepository.costumeArrangement(waitRequestDto);
+        if (!isExistUserWithRestRoomTableExist(waitRequestDto.getUid())) {
+            return waitRoomRepository.costumeArrangementSet(waitRequestDto);
+        }
+        return waitRoomRepository.costumeArrangementUpdate(waitRequestDto);
     }
 
-    public List<CardCoordinate> DtoListToEntityList(WaitRequestDto waitRequestDtos) {
+    private List<CardCoordinate> DtoListToEntityList(WaitRequestDto waitRequestDtos) {
         List<CardCoordinate> cardCoordinates = new ArrayList<>();
 
         for (WaitRequestDto.CardDto cardDto : waitRequestDtos.getCardList()) {
             cardCoordinates.add(new CardCoordinate(cardDto));
         }
         return cardCoordinates;
+    }
+
+    private boolean isExistTable(String uid) {
+        return waitRoomRepository.existTable(uid);
+    }
+
+    private boolean isExistUserWithRestRoomTableExist(String uid) {
+        if (memberRepository.existUid(uid)) {
+            return isExistTable(uid);
+        } else {
+            throw new CustomException(NOT_FIND_USER);
+        }
     }
 
 }
