@@ -28,7 +28,7 @@ public class WaitRoomRepository {
         return fireBase.makeDatabaseConn();
     }
 
-    public MessageResponseDto cardArrangementUpdate(Map<String, List<CardCoordinate>> waitRoomMap, String key, String uid) {
+    public MessageResponseDto cardArrangementUpdate(Map<String, List<String>> waitRoomMap, String key, String uid) {
         try {
             Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
 
@@ -65,7 +65,7 @@ public class WaitRoomRepository {
         }
     }
 
-    public MessageResponseDto cardArrangementSet(Map<String, List<CardCoordinate>> waitRoomMap, String key, String uid) {
+    public MessageResponseDto cardArrangementSet(Map<String, List<String>> waitRoomMap, String key, String uid) {
         try {
             Firestore db = newCreateFireBase(DEFAULT_DATABASE.getType());
             db.collection(WAIT_ROOM_CARD.getTable())

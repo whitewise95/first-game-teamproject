@@ -23,10 +23,10 @@ public class WaitRoomService {
     }
 
     public MessageResponseDto cardArrangement(WaitRequestDto waitRequestDto, String cardType) {
-        Map<String, List<CardCoordinate>> waitRoomMap = new HashMap<>();
+        Map<String, List<String>> waitRoomMap = new HashMap<>();
         String key = cardType + LIST;
 
-        waitRoomMap.put(key, DtoListToEntityList(waitRequestDto));
+        waitRoomMap.put(key, waitRequestDto.getCardList());
 
         if (!isExistUserWithRestRoomTableExist(waitRequestDto.getUid())) {
             return waitRoomRepository.cardArrangementSet(
@@ -47,15 +47,6 @@ public class WaitRoomService {
             return waitRoomRepository.costumeArrangementSet(waitRequestDto);
         }
         return waitRoomRepository.costumeArrangementUpdate(waitRequestDto);
-    }
-
-    private List<CardCoordinate> DtoListToEntityList(WaitRequestDto waitRequestDtos) {
-        List<CardCoordinate> cardCoordinates = new ArrayList<>();
-
-        for (WaitRequestDto.CardDto cardDto : waitRequestDtos.getCardList()) {
-            cardCoordinates.add(new CardCoordinate(cardDto));
-        }
-        return cardCoordinates;
     }
 
     private boolean isExistTable(String uid) {
