@@ -20,7 +20,7 @@ public class CommonRepository {
     }
 
     public Firestore newCreateFireBase() throws Exception {
-        fireBase.dbInit(DEFAULT_DATABASE.getType());
+        fireBase.dbInit(DEFAULT_DATABASE);
         return fireBase.makeDatabaseConn();
     }
 

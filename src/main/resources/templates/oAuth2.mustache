@@ -43,7 +43,7 @@
     measurementId: "G-Q5CGV5CSQJ"
   };
   var ui = createUi()
-  if($("#platform").val() == 'google') {
+  if ($("#platform").val() == 'google') {
     platform = firebase.auth.GoogleAuthProvider.PROVIDER_ID
   } else if ($("#platform").val() == 'facebook') {
     platform = firebase.auth.FacebookAuthProvider.PROVIDER_ID
@@ -53,6 +53,7 @@
     callbacks: {
       signInSuccessWithAuthResult: function (authResult, redirectUrl) {
         sendData.uniqueNumber = $("#UniqueNumber").val();
+        debugger;
         sendData.uid = authResult.user._delegate.uid;
         sendData.email = authResult.user._delegate.email;
         $.ajax({
@@ -61,7 +62,11 @@
           data: JSON.stringify(sendData),
           url: "/oauth",
           success: function (response) {
-              $(".hide").hidden;
+            $(".hide").hidden;
+          },
+          error: function (request, status, error) {
+            location.reload();
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
           }
         })
         return true;
@@ -78,7 +83,7 @@
   ui.start('#firebaseui-auth-container', uiConfig);
 
 
-  function createUi(){
+  function createUi() {
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 
@@ -88,7 +93,7 @@
     return new firebaseui.auth.AuthUI(firebase.auth());
   }
 
-  window.onload = function(){
+  window.onload = function () {
     $(".firebaseui-id-idp-button").click();
   }
 
