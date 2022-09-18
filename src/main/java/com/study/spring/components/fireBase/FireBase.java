@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.*;
 
+import static com.google.firebase.FirebaseApp.DEFAULT_APP_NAME;
+
 @Component
 public class FireBase {
 
@@ -30,7 +32,7 @@ public class FireBase {
 
         if (Optional.ofNullable(fireApp).isPresent() && !fireApp.isEmpty()) {
             firebaseApp = fireApp.stream()
-                    .filter(fire -> fire.getName().equals(dataBaseUrl.getKey()))
+                    .filter(fire -> fire.getName().equals(DEFAULT_APP_NAME))
                     .findFirst()
                     .orElseGet(() -> null);
 
@@ -44,7 +46,7 @@ public class FireBase {
                     .setDatabaseUrl(dataBaseUrl.getType())
                     .build();
 
-            firebaseApp.initializeApp(options, dataBaseUrl.getKey());
+            firebaseApp.initializeApp(options);
         }
 
 
