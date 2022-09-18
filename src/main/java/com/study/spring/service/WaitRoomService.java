@@ -24,14 +24,12 @@ public class WaitRoomService {
 
     public MessageResponseDto cardArrangement(WaitRequestDto waitRequestDto, String cardType) {
         Map<String, List<String>> waitRoomMap = new HashMap<>();
-        String key = cardType + LIST;
-
+        String key = cardType.toLowerCase() + LIST;
         waitRoomMap.put(key, waitRequestDto.getCardList());
 
         if (!isExistUserWithRestRoomTableExist(waitRequestDto.getUid())) {
             return waitRoomRepository.cardArrangementSet(
                     waitRoomMap,
-                    key,
                     waitRequestDto.getUid()
             );
         }

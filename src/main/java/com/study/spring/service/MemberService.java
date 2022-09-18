@@ -3,8 +3,8 @@ package com.study.spring.service;
 import com.study.spring.components.Components;
 import com.study.spring.controller.IndexController;
 import com.study.spring.domain.User;
-import com.study.spring.dto.OAuth;
-import com.study.spring.repository.MemberRepository;
+import com.study.spring.dto.*;
+import com.study.spring.repository.*;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.stereotype.Service;
@@ -21,13 +21,15 @@ public class MemberService {
 
     private final Components components;
     private final MemberRepository memberRepository;
+    private final WaitRoomRepository waitRoomRepository;
     private final CommonService commonService;
 
     public MemberService(Components components,
                          MemberRepository memberRepository,
-                         CommonService commonService) {
+                         WaitRoomRepository waitRoomRepository, CommonService commonService) {
         this.components = components;
         this.memberRepository = memberRepository;
+        this.waitRoomRepository = waitRoomRepository;
         this.commonService = commonService;
     }
 
@@ -67,9 +69,15 @@ public class MemberService {
         return memberRepository.nickNameChange(user);
     }
 
-    public User userinfo(User user) {
-        return Optional.ofNullable(memberRepository.userSelect(user.getUid()))
+    public UserInfoResponseDto userinfo(User user) {
+        User currentUser = Optional.ofNullable(memberRepository.userSelect(user.getUid()))
                 .orElseThrow(() -> new RuntimeException(String.format("%s 에 대한 정보를 찾지못했습니다.", user.getUid())));
+
+        UserInfoResponseDto userInfoResponseDto = waitRoomRepository.findByUid(currentUser.getUid())
+                .orElse(new UserInfoResponseDto());
+
+        userInfoResponseDto.setUser(currentUser);
+        return userInfoResponseDto;
     }
 
     public User guestSelect(User user) {

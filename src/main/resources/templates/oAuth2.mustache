@@ -48,7 +48,7 @@
   } else if ($("#platform").val() == 'facebook') {
     platform = firebase.auth.FacebookAuthProvider.PROVIDER_ID
   }
-
+debugger;
   var uiConfig = {
     callbacks: {
       signInSuccessWithAuthResult: function (authResult, redirectUrl) {
@@ -74,6 +74,7 @@
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
+    autoUpgradeAnonymousUsers: true, // 추가됨
     signInSuccessUrl: baseUrl + '/success',
     signInOptions: [
       platform
