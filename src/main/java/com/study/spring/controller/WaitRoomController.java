@@ -25,4 +25,7 @@ public class WaitRoomController {
     public MessageResponseDto costumeArrangement(@Validated(WaitValidGroups.Custom.class) @RequestBody WaitRequestDto waitRequestDto) {
         return waitRoomService.costumeArrangement(waitRequestDto);
     }
+
+    //TODO /member/costume
+
 }
