@@ -1,13 +1,14 @@
 package com.study.spring.repository;
 
+import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
 import com.study.spring.components.fireBase.FireBase;
 import com.study.spring.domain.User;
 import com.study.spring.domain.resultType.DataBaseType;
 import com.study.spring.dto.OAuth;
+import com.study.spring.dto.StoreDto;
 import com.study.spring.dto.common.resultType.DataBaseTable;
 import com.study.spring.exceptionHandler.CustumException.CustomException;
 import org.springframework.stereotype.Repository;
@@ -139,5 +140,19 @@ public class MemberRepository {
             throw new RuntimeException(e.getMessage());
         }
         return oAuth.getUniqueNumber();
+    }
+
+    public Timestamp updateMemberItem(User user, StoreDto.Update update, Integer gold) {
+        try {
+            Firestore db = newCreateFireBase(DEFAULT_DATABASE);
+            return db.collection(USER.getTable())
+                     .document(user.getUid())
+                     .update("costumeList", FieldValue.arrayUnion(new User.Costume(update.getItemNum())), "gold", gold)
+                     .get()
+                     .getUpdateTime();
+
+        } catch (Exception e){
+            throw new RuntimeException("시스템 오류 : " + e.getMessage());
+        }
     }
 }

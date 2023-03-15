@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/member")
 public class MemberController {
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -23,24 +24,32 @@ public class MemberController {
         this.commonService = commonService;
     }
 
-    @PostMapping("/member/login")
+    @PostMapping("/login")
     public String login(@Validated(Login.class) OAuth oAuth) {
          return memberService.login(oAuth);
     }
 
-    @PostMapping("/member/nickNameChange")
+    @PostMapping("/nickNameChange")
     public String nickNameChange(@Validated(NickName.class) User user) {
         return memberService.nickNameChange(user);
     }
 
-    @PostMapping("/member")
+    @PostMapping
     public UserInfoResponseDto userInfo(@Validated(Login.class) User user) {
         return memberService.userinfo(user);
     }
 
-    @PostMapping("/member/guestSelect")
+    @PostMapping("/guestSelect")
     public User guestGuest(@Validated(Login.class) User user) {
         return memberService.guestSelect(user);
+    }
+
+    /**
+     * 상점에서 구매
+     * */
+    @PostMapping("/store")
+    public MessageResponseDto updateMemberItem(@RequestBody StoreDto.Update update){
+        return memberService.updateMemberItem(update);
     }
 }
 

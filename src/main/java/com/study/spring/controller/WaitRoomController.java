@@ -26,6 +26,4 @@ public class WaitRoomController {
         return waitRoomService.costumeArrangement(waitRequestDto);
     }
 
-    //TODO /member/costume
-
 }
