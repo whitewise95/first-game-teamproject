@@ -35,8 +35,7 @@ public class WaitRoomRepository {
         try {
             Firestore db = newCreateFireBase(DEFAULT_DATABASE);
 
-            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable())
-                    .document(uid);
+            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable()).document(uid);
             docRef.update(key, waitRoomMap.get(key));
         } catch (Exception e) {
             throw new CustomException(FAIL_DATABASE_SAVE);

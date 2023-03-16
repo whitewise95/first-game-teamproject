@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class WaitRequestDto {
 
