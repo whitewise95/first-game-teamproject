@@ -115,7 +115,7 @@ public class MemberService {
 			throw new RuntimeException(String.format("%s에 대한 정보를 찾지못했습니다.", user.getUid()));
 		}
 
-		Integer gold = user.getGold() - update.getGold() * update.getQty();
+		Integer gold = user.getGold() - update.getGold();
 		if (gold < 0) {
 			throw new RuntimeException("골드가 부족합니다.");
 		}

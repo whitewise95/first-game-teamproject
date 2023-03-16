@@ -25,12 +25,6 @@ public class StoreDto {
 		private Integer itemNum;
 
 		/**
-		 * 개수
-		 * */
-		@NotNull
-		private Integer qty;
-
-		/**
 		 * 가격
 		 * */
 		@NotNull
