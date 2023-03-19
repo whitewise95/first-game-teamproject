@@ -7,6 +7,7 @@ import com.study.spring.dto.MessageResponseDto;
 import com.study.spring.dto.OAuth;
 import com.study.spring.dto.StoreDto;
 import com.study.spring.dto.UserInfoResponseDto;
+import com.study.spring.dto.WaitRequestDto;
 import com.study.spring.repository.MemberRepository;
 import com.study.spring.repository.WaitRoomRepository;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -51,12 +52,11 @@ public class MemberService {
 
 		if (!Optional.ofNullable(memberRepository.userSelect(user.getUid())).isPresent()) {
 			memberRepository.userInsert(user);
+			WaitRequestDto waitRequestDto = new WaitRequestDto();
+			waitRequestDto.setCurrentCustomNum(0);
+			waitRequestDto.setUid(user.getUid());
+			waitRoomRepository.costumeArrangementSet(waitRequestDto);
 		}
-	}
-
-	//사용아직안하는중
-	public OAuth socialSelect(OAuth oAuth) throws Exception {
-		return memberRepository.socialSelect(oAuth);
 	}
 
 	public String nickNameChange(User user) {
@@ -95,11 +95,6 @@ public class MemberService {
 			memberRepository.userInsert(user);
 			return memberRepository.userSelect(user.getUid());
 		}
-	}
-
-	//사용안하는중
-	public SecretKeySpec getSecretKeySpec(byte[] secretKeyBytes) {
-		return new SecretKeySpec(secretKeyBytes, signatureAlgorithm.getJcaName());
 	}
 
 	public String login(OAuth oAuth) {

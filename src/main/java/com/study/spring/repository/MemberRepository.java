@@ -87,9 +87,7 @@ public class MemberRepository {
 			user.getCardList().add(card4);
 			user.getCardList().add(card5);
 			user.getCardList().add(card6);
-			for (int i = 1; i < 5; i++) {
-				user.getCostumeList().add(new User.Costume(i));
-			}
+			user.getCostumeList().add(new User.Costume(0));
 			user.setLevel(1);
 			Firestore db = newCreateFireBase(DEFAULT_DATABASE);
 			db.collection(USER.getTable()).document(user.getUid()).set(user);

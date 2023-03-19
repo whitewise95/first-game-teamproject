@@ -89,6 +89,7 @@ public class WaitRoomRepository {
                     .document(waitRequestDto.getUid())
                     .set(waitRoomMap);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new CustomException(FAIL_DATABASE_SAVE);
         }
         return new MessageResponseDto(200, "저장되었습니다.");

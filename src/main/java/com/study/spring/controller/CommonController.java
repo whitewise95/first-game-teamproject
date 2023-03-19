@@ -40,9 +40,4 @@ public class CommonController {
     public String getJwt(@RequestParam("idToken") String idToken) throws Exception {
         return commonService.getJwt(idToken);
     }
-
-    //    @PostMapping("/requestJwt")
-    //    public String createJwt(@RequestParam("id") String id) {
-    //        return memberService.createJwt(id);
-    //    }
 }
