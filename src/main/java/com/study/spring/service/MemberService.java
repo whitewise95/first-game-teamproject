@@ -53,7 +53,7 @@ public class MemberService {
 		if (!Optional.ofNullable(memberRepository.userSelect(user.getUid())).isPresent()) {
 			memberRepository.userInsert(user);
 			WaitRequestDto waitRequestDto = new WaitRequestDto();
-			waitRequestDto.setCurrentCustomNum(0);
+			waitRequestDto.setCurrentCustomNum(1);
 			waitRequestDto.setUid(user.getUid());
 			waitRoomRepository.costumeArrangementSet(waitRequestDto);
 		}
