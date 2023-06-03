@@ -1,5 +1,10 @@
 package com.study.spring.components;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = "components.fire-base-properties")
 public class FireBaseProperties {
 
     private String secretKey;

@@ -2,58 +2,43 @@ package com.study.spring.components.fireBase;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
-import com.google.firebase.*;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-import com.study.spring.components.*;
-import com.study.spring.domain.resultType.DataBaseType;
+import com.study.spring.components.FireBaseProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
-import java.util.*;
-
-import static com.google.firebase.FirebaseApp.DEFAULT_APP_NAME;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class FireBase {
 
-    private FireBaseProperties fireBaseProperties;
+    private final FireBaseProperties fireBaseProperties;
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
 
-    public FireBase(Components components) {
-        this.fireBaseProperties = components.getFireBaseProperties();
-    }
+    private Firestore DB;
 
-    private static Firestore DB;
-
-    public void dbInit(DataBaseType dataBaseUrl) throws Exception {
+    public void init() throws Exception {
         FirebaseApp firebaseApp = null;
-        List<FirebaseApp> fireApp = FirebaseApp.getApps();
+        serviceAccount = new FileInputStream(
+                new File("").getAbsolutePath() + "/" + fireBaseProperties.getFireBaseKey()
+        );
 
-        if (Optional.ofNullable(fireApp).isPresent() && !fireApp.isEmpty()) {
-            firebaseApp = fireApp.stream()
-                    .filter(fire -> fire.getName().equals(DEFAULT_APP_NAME))
-                    .findFirst()
-                    .orElseGet(() -> null);
+        options = new FirebaseOptions.Builder()
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .build();
 
-        }
-        if (!Optional.ofNullable(firebaseApp).isPresent()) {
-            serviceAccount = new FileInputStream(
-                    new File("").getAbsolutePath() + "/" + fireBaseProperties.getFireBaseKey()
-            );
-            options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl(dataBaseUrl.getType())
-                    .build();
+        firebaseApp.initializeApp(options);
 
-            firebaseApp.initializeApp(options);
-        }
-
-
+        DB = FirestoreClient.getFirestore();
     }
 
-    public static Firestore makeDatabaseConn() {
-        return DB = FirestoreClient.getFirestore();
+    public Firestore getDB() {
+        return DB;
     }
-
 }

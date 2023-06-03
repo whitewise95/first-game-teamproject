@@ -1,5 +1,10 @@
 package com.study.spring.components;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ConfigurationProperties(prefix = "components")
 public class Components {
 
     private FireBaseProperties fireBaseProperties;
