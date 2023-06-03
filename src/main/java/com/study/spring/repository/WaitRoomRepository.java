@@ -2,6 +2,7 @@ package com.study.spring.repository;
 
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.Transaction;
 import com.study.spring.components.fireBase.FireBase;
 import com.study.spring.dto.MessageResponseDto;
 import com.study.spring.dto.UserInfoResponseDto;
@@ -41,16 +42,22 @@ public class WaitRoomRepository {
     }
 
     public MessageResponseDto costumeArrangementUpdate(WaitRequestDto waitRequestDto) {
-        try {
-            Firestore db = fireBase.getDB();
+        Firestore db = fireBase.getDB();
+        DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable()).document(waitRequestDto.getUid());
 
-            DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable())
-                    .document(waitRequestDto.getUid());
-            docRef.update(CURRENT_CUSTOM_NUM, waitRequestDto.getCurrentCustomNum());
-        } catch (Exception e) {
-            throw new CustomException(FAIL_DATABASE_SAVE);
-        }
-        return new MessageResponseDto(200, "저장되었습니다.");
+        db.runTransaction((Transaction.Function<Void>) transaction -> {
+            transaction.update(docRef, CURRENT_CUSTOM_NUM, waitRequestDto.getCurrentCustomNum());
+            return null;
+        });
+        throw new RuntimeException();
+//        return new MessageResponseDto(200, "저장되었습니다.");
+    }
+
+    public MessageResponseDto costumeArrangementUpdate2(Firestore db, Transaction transaction, WaitRequestDto waitRequestDto) {
+        DocumentReference docRef = db.collection(WAIT_ROOM_CARD.getTable()).document(waitRequestDto.getUid());
+        transaction.update(docRef, CURRENT_CUSTOM_NUM, waitRequestDto.getCurrentCustomNum());
+        throw new RuntimeException("test");
+//        return new MessageResponseDto(200, "저장되었습니다.");
     }
 
     public Boolean existTable(String uid) {

@@ -1,10 +1,7 @@
 package com.study.spring.repository;
 
 import com.google.cloud.Timestamp;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.FieldValue;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.database.DatabaseReference;
@@ -101,14 +98,21 @@ public class MemberRepository {
     }
 
     public String nickNameChange(User user) {
-        try {
-            Firestore db = fireBase.getDB();
-            DocumentReference docRef = db.collection(USER.getTable()).document(user.getUid());
-            docRef.update("nickName", user.getNickName());
-            return user.getNickName();
-        } catch (Exception e) {
-            throw new RuntimeException("시스템 오류 : " + e.getMessage());
-        }
+        Firestore db = fireBase.getDB();
+        DocumentReference docRef = db.collection(USER.getTable()).document(user.getUid());
+
+        db.runTransaction((Transaction.Function<Void>) transaction -> {
+            transaction.update(docRef, "nickName", user.getNickName());
+            return null;
+        });
+
+        return user.getNickName();
+    }
+
+    public String nickNameChange2(Firestore db, Transaction transaction, User user) {
+        DocumentReference docRef = db.collection(USER.getTable()).document(user.getUid());
+        transaction.update(docRef, "nickName", user.getNickName());
+        return user.getNickName();
     }
 
     public int nickNameSelect(String nickName) {
