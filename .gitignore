@@ -91,6 +91,5 @@ gen
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
 egoism-3af0d-firebase-adminsdk-ilve2-f2c4f6863e.json
 src/main/resources
